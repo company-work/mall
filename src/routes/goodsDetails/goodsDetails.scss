@@ -1,0 +1,308 @@
+.page-goodsDetails {
+  .g-show-dialog{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right:0;
+    overflow: hidden;
+  }
+  .g-title {
+    height: 620px;
+    background: #fff;
+    .g-img {
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      img {
+        display: block;
+        width: 640px;
+        height: 440px;
+      }
+    }
+    .g-intro {
+      height: 180px;
+      box-sizing: border-box;
+      padding: 30px 30px 0;
+      .g-name {
+        font-size: 24px;
+        height: 50px;
+        line-height: 50px;
+      }
+      .g-sale {
+        background: url("../../public/imgs/icon-2.jpg") 0 center no-repeat;
+        background-size: 17px 18px;
+        padding-left: 30px;
+        color: #ff991c;
+        font-size: 18px;
+        span{
+          display: inline-block;
+          border-radius: 4px;
+          background:#ff9a1d url("../../public/imgs/icon-lock.jpg") 5px center no-repeat;
+          background-size: 19px 20px;
+          color: #fff;
+          width: 108px;
+          height: 25px;
+          line-height: 25px;
+          margin-left: 30px;
+          box-sizing: border-box;
+          padding-left: 30px;
+          font-size: 16px;
+        }
+      }
+      .g-price {
+        background: url("../../public/imgs/icon-2-grey.jpg") 0 center no-repeat;
+        background-size: 17px 18px;
+        padding-left: 30px;
+        color: #999;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .g-desc {
+    margin-top: 20px;
+    background: #fff;
+    padding: 40px 30px 30px;
+    h3 {
+      font-size: 24px;
+      font-weight: normal;
+      height: 50px;
+      line-height: 50px;
+    }
+    .g-desc-body {
+      font-size: 24px;
+      color: #747474;
+      line-height: 45px;
+      font-weight: normal;
+      text-align: justify;
+    }
+  }
+  .g-details {
+    background: #fff;
+    padding-bottom: 160px;
+    h3 {
+      font-size: 24px;
+      font-weight: normal;
+      padding: 0 30px 15px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .g-details-body {
+      img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .g-btn-submit {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    background: #dc3900;
+    z-index: 9999;
+  }
+
+  .g-buy{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right:0;
+    background: rgba(0,0,0,0.7);
+    .g-buy-inner{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 870px;
+      background: #fff;
+    }
+    .g-info{
+      position: relative;
+      width: 100%;
+      height: 222px;
+      padding-left: 265px;
+      &:after{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: #ebebeb;
+        content: "";
+      }
+      .g-info-img{
+        position: absolute;
+        left: 30px;
+        top: -15px;
+        width: 214px;
+        height: 214px;
+        border: 1px solid #ebebeb;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 6px;
+        background: #fff;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        img{
+          display: block;
+          width: 170px;
+          height: 170px;
+        }
+      }
+      .g-info-intro{
+        padding-top: 30px;
+        .g-sale{
+          font-size: 28px;
+          color: #ff991c;
+        }
+        .g-price{
+          color: #999;
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+        .g-num{
+          font-size: 28px;
+          margin-bottom: 5px;
+        }
+        .g-choose{
+          font-size: 18px;
+        }
+      }
+      .g-buy-close{
+        position: absolute;
+        top: 25px;
+        right:30px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        i{
+          font-size: 28px;
+          color: #999;
+        }
+      }
+    }
+    .buy-props{
+      width: 100%;
+      overflow: auto;
+      padding-bottom: 80px;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+      .b-type{
+        padding: 20px 30px;
+        border-bottom: 1px solid #ebebeb;
+        &:last-child{
+          border: none;
+        }
+        .b-t-title{
+          height: 40px;
+          line-height: 40px;
+          margin-bottom: 20px;
+        }
+        .b-t-body{
+          span{
+            display: inline-block;
+            font-size: 22px;
+            padding: 12px 30px;
+            text-align: center;
+            margin-right: 18px;
+            color:#4e4e4e;
+            border: 1px solid #4e4e4e;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            &.active{
+              color: #dc3900;
+              border-color: #dc3900;
+            }
+            &.disabled{
+              color: #b7b7b7;
+              border-color: #b7b7b7;
+            }
+          }
+        }
+
+        /*--数量--*/
+        &.buy-num{
+          .b-t-title{
+            margin-bottom: 0;
+            width: 150px;
+          }
+          .b-t-body{
+            .b-input{
+              border: 1px solid #4e4e4e;
+              height: 50px;
+              width: 100px;
+              margin: 0 5px;
+              border-radius: 2px;
+              input{
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                font-size: 24px;
+              }
+            }
+            .b-reduce,.b-plus{
+              width: 50px;
+              height: 50px;
+              text-align: center;
+              line-height: 50px;
+              background: #c2c2c2;
+              color: #fbfbfb;
+            }
+          }
+        }
+        /*--支付--*/
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

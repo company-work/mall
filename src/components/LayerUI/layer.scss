@@ -1,0 +1,238 @@
+/******End LineLayer**************************************/
+@mixin boxSizing {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+@mixin box {
+  display: -webkit-box;
+}
+
+@mixin border-radius($value) {
+  border-radius: $value;
+  -webkit-border-radius: $value;
+}
+
+@mixin orient($value: vertical /**horizontal*/ ) {
+  -webkit-box-orient: $value;
+}
+
+@mixin pack($value: start) {
+  -webkit-box-pack: $value;
+}
+
+@mixin align($value: start) {
+  -webkit-box-align: $value;
+}
+
+@mixin flex($value: 1) {
+  -webkit-box-flex: $value;
+}
+
+@mixin box-v {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+}
+
+@mixin box-vpe {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(end);
+}
+
+@mixin box-vpc {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(center);
+}
+
+@mixin box-vpsas {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(start);
+  @include align(start);
+}
+
+@mixin box-vpcac {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(center);
+  @include align(center);
+}
+
+@mixin box-vpeas {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(end);
+  @include align(start);
+}
+
+@mixin box-vpeac {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(end);
+  @include align(center);
+}
+
+@mixin box-vpsac {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include pack(start);
+  @include align(center);
+}
+
+@mixin box-vac {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include align(center);
+}
+
+@mixin box-vas {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include align(start);
+}
+
+@mixin box-vae {
+  @include box;
+  @include boxSizing();
+  @include orient(vertical);
+  @include align(end);
+}
+
+
+@mixin box-h {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+}
+
+@mixin box-hac {
+  @include box;
+  @include boxSizing();
+  @include align(center);
+}
+
+
+@mixin box-hpe {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+  @include pack(end);
+}
+
+@mixin box-hpsac {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+  @include pack(start);
+  @include align(center);
+}
+
+@mixin box-hpcac {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+  @include pack(center);
+  @include align(center);
+}
+@mixin box-hpeac {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+  @include pack(end);
+  @include align(center);
+}
+
+
+
+
+.layer_ {
+  @include box;
+  @include boxSizing();
+}
+
+.layer_v {
+  @include box-v;
+  @include boxSizing();
+}
+
+.layer_vpe {
+  @include box-vpe;
+}
+
+.layer_vpc {
+  @include box-vpc;
+}
+
+.layer_vpsas {
+  @include box-vpsas;
+}
+
+.layer_vpcac {
+  @include box-vpcac;
+}
+
+.layer_vpeas {
+  @include box-vpeas;
+}
+
+.layer_vpeac {
+  @include box-vpeac;
+}
+
+.layer_vpsac {
+  @include box-vpsac;
+}
+
+.layer_vac {
+  @include box-vac;
+}
+
+.layer_vae {
+  @include box-vae;
+}
+
+.layer_h {
+  @include box-h;
+  @include boxSizing();
+}
+
+.layer_hac {
+  @include box-hac;
+}
+
+.layer_hpe {
+  @include box-hpe;
+}
+
+
+.layer_hpsac {
+  @include box-hpsac;
+}
+
+.layer_hpeac {
+  @include box-hpeac;
+}
+
+.layer_hpcac {
+  @include box-hpcac;
+}
+
+.layer_flex {
+  @include flex(1);
+}
+
+
+
+/******End LineLayer**************************************/

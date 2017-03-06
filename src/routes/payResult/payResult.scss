@@ -1,0 +1,86 @@
+.page-payResult {
+  .r-info{
+    height: 400px;
+    background: #fff;
+    .r-info-img{
+      width: 127px;
+      height: 109px;
+      margin: 0 auto;
+    }
+    .r-info-name{
+      font-size: 32px;
+      text-align: center;
+      margin: 45px 0 15px;
+    }
+    .r-info-txt{
+      font-size: 24px;
+      text-align: center;
+    }
+    &.r-info-success{
+      .r-info-img{
+        background: url("../../public/imgs/icon-success.jpg") center 0 no-repeat;
+        background-size: 127px 109px;
+      }
+    }
+    &.r-info-error{
+      .r-info-img{
+        background: url("../../public/imgs/icon-error.jpg") center 0 no-repeat;
+        background-size: 127px 109px;
+      }
+    }
+    &.r-info-process{
+      .r-info-img{
+        background: url("../../public/imgs/icon-process.jpg") center 0 no-repeat;
+        background-size: 127px 109px;
+      }
+    }
+  }
+  .r-btn{
+    margin-top: 40px;
+    padding: 0 30px;
+    width: 100%;
+    .r-btn-inner{
+      font-size: 30px;
+      background: #dc3900;
+      color: #fff;
+      height: 80px;
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,223 @@
+.page-index {
+
+  .goods-intro {
+    .g-name {
+      height: 50px;
+      line-height: 50px;
+    }
+    .g-sale {
+      font-size: 28px;
+      color: #fd9932;
+      background: url("../../public/imgs/icon-2.jpg") 0 8px no-repeat;
+      background-size: 17px 18px;
+      padding-left: 25px;
+      height: 35px;
+      line-height: 35px;
+    }
+    .g-price {
+      font-size: 18px;
+      color: #999;
+      background: url("../../public/imgs/icon-2-grey.jpg") 0 0 no-repeat;
+      background-size: 17px 18px;
+      padding-left: 30px;
+    }
+  }
+
+  /*--横向滚动商品列表--*/
+  .g-swiper-list {
+    width: 100%;
+    height: 294px;
+    overflow: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    .g-body-inner {
+      white-space: nowrap;
+    }
+    .g-item {
+      display: inline-block;
+      width: 250px;
+      height: 294px;
+
+      .g-img {
+        width: 150px;
+        height: 150px;
+        padding: 0 50px;
+        img {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+      .g-intro {
+        width: 170px;
+        margin: 0 auto;
+        .g-name {
+          width: 200px !important;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .g-sale, .g-price {
+          display: block;
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .scrollBanner, .pointBox, .chainBox, .flashSale, .bannerBox, .recommend, .categoryBox {
+    background: #fff;
+  }
+  .scrollBanner {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    height: 300px;
+    img {
+      width: 640px;
+      max-width: 640px;
+    }
+  }
+  .chainBox {
+    display: none;
+  }
+  .pointBox {
+    height: 82px;
+    .point-left {
+      background: url("../../public/imgs/icon-0.jpg") 40px center no-repeat;
+      background-size: 30px 30px;
+      padding-left: 80px;
+      span {
+        color: #ff9a1d;
+        margin-left: 15px;
+      }
+    }
+    .point-right {
+      background: url("../../public/imgs/icon-1.jpg") 40px center no-repeat;
+      background-size: 30px 30px;
+      padding-left: 80px;
+    }
+  }
+  .flashSale {
+    height: 252px;
+    margin-top: 20px;
+    padding: 0 30px;
+    .flashSale-title {
+      height: 70px;
+      background: url("../../public/imgs/icon-3.jpg") 0 center no-repeat;
+      background-size: 19px 26px;
+      padding-left: 30px;
+      span {
+        font-size: 18px;
+        color: #fff;
+        background: #f84040;
+        display: -webkit-box;
+        border-radius: 4px;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        width: 103px;
+        height: 25px;
+        margin-left: 10px;
+      }
+    }
+    .flashSale-body {
+      .f-img {
+        width: 290px;
+        height: 170px;
+        img {
+          width: 170px;
+          height: 170px;
+          max-width: 170px;
+        }
+      }
+      .f-intro {
+        padding-top: 30px;
+
+      }
+
+    }
+  }
+  .bannerBox {
+    height: 172px;
+    margin-top: 20px;
+    img {
+      width: 320px;
+      height: 172px;
+    }
+    overflow: hidden;
+  }
+  /*--热卖推荐--*/
+  .recommend {
+    height: 362px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    .r-title {
+      padding: 24px 0 20px;
+      text-align: center;
+
+      background: url("../../public/imgs/icon-4.jpg") center 35px no-repeat;
+      background-size: 269px 10px;
+    }
+    .r-body {
+      width: 100%;
+      height: 294px;
+      overflow-x: scroll;
+      .r-body-inner {
+        white-space: nowrap;
+      }
+      .r-item {
+        display: inline-block;
+        width: 250px;
+        height: 294px;
+        .r-item-img {
+          width: 150px;
+          height: 150px;
+          padding: 0 50px;
+          img {
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+        .r-item-intro {
+          width: 170px;
+          margin: 0 auto;
+          .g-name {
+            width: 200px !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .g-sale, .g-price {
+            display: block;
+            width: 150px;
+          }
+        }
+      }
+    }
+  }
+
+  /*--类目--*/
+  .categoryBox {
+    height: 582px;
+    margin-top: 20px;
+    .c-title{
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      img{
+        display: block;
+        width: 640px;
+        height: 300px;
+      }
+    }
+    .c-body{
+      .g-img{
+        margin: 18px 0;
+      }
+      .g-name{
+        height: auto;
+        line-height: inherit;
+      }
+    }
+  }
+}

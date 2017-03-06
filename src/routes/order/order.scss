@@ -1,0 +1,330 @@
+.page-order {
+  .o-address {
+    height: 118px;
+    padding: 0 30px;
+    background: #fff;
+
+    .o-a-left {
+      padding-left: 48px;
+      font-size: 28px;
+      background: url("../../public/imgs/icon-address.jpg") 0 center no-repeat;
+      background-size: 28px 36px;
+    }
+    .o-a-right {
+      width: 20px;
+      i {
+        font-size: 28px;
+      }
+    }
+  }
+  .o-content {
+    .o-goods {
+      height: 238px;
+      background: #fff;
+      .o-g-img {
+        width: 220px;
+        height: 238px;
+        img {
+          display: block;
+          width: 170px;
+          height: 170px;
+          max-width: 170px;
+        }
+      }
+      .o-g-info {
+        .g-info {
+          & > div {
+            height: 45px;
+            line-height: 45px;
+          }
+        }
+        .g-name {
+          font-size: 28px;
+        }
+        .g-types {
+          color: #999;
+          font-size: 22px;
+          span {
+            margin-right: 30px;
+          }
+        }
+        .g-price {
+          background: url("../../public/imgs/icon-2.jpg") 0 center no-repeat;
+          background-size: 17px 18px;
+          padding-left: 30px;
+          color: #ff991c;
+          font-size: 24px;
+        }
+      }
+    }
+    .o-nums {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 30px;
+      background: #fff;
+      height: 80px;
+      .o-nums-left {
+        width: 150px;
+      }
+      &:after {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        width: 100%;
+        height: 1px;
+        content: "";
+        background: #e0e0e0;
+      }
+    }
+    .o-goods {
+    }
+
+    .o-tels {
+      .o-nums-right {
+
+        input {
+          font-size: 24px;
+          padding: 3px 0 0 15px;
+        }
+        ::-webkit-input-placeholder {
+          color: #ccc;
+        }
+      }
+    }
+    .o-pays {
+      background: #fff;
+      padding: 20px 30px;
+      .o-pays-inner {
+        & > div {
+          height: 45px;
+          line-height: 45px;
+        }
+      }
+      .p-item {
+        color: #999;
+        .p-right {
+          width: 200px;
+          &.p-p-right {
+            img {
+              margin-right: 15px;
+              width: 17px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .o-submit-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background: #fff;
+    .o-submit-info {
+      padding-left: 30px;
+      .submit-info-inner {
+        & > div {
+          height: 30px;
+          line-height: 30px;
+        }
+
+      }
+      .s-info-price {
+        color: #ff991c;
+        margin-left: -5px;
+        span {
+          margin: 5px;
+        }
+        span:first-child {
+          background: url("../../public/imgs/icon-2.jpg") 0 center no-repeat;
+          background-size: 17px 18px;
+          padding-left: 30px;
+        }
+      }
+    }
+    .o-submit-btn {
+      width: 220px;
+      height: 100%;
+      background: #dc3900;
+      color: #fff;
+    }
+  }
+
+  /*--支付密码--*/
+  .o-password {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    .o-p-body {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 780px;
+      background: #fff;
+      z-index: 9999;
+    }
+    .o-title {
+      position: relative;
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      font-size: 32px;
+      background: #f8f8f8;
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: #e0e0e0;
+        content: "";
+      }
+      i {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-size: 30px;
+        color: #999;
+      }
+    }
+    .o-info {
+      position: relative;
+      height: 284px;
+      text-align: center;
+      font-size: 28px;
+      box-sizing: border-box;
+      padding: 15px 0;
+      background: #f5f5f5;
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: #e0e0e0;
+        content: "";
+      }
+      .o-secret {
+        width: 488px;
+        height: 88px;
+        border: 1px solid #e0e0e0;
+        margin: 20px auto 40px;
+        border-radius: 10px;
+        background: #f8f8f8;
+        & > div {
+          position: relative;
+          &:after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: #e0e0e0;
+            content: "";
+          }
+          &:last-child:after {
+            display: none;
+          }
+        }
+        .active {
+          background: url("../../public/imgs/icon-disc.jpg") center no-repeat;
+          background-size: 20px 20px;
+        }
+      }
+      .o-tips {
+        .o-tips-inner {
+          font-size: 20px;
+          color: #606060;
+          background: url("../../public/imgs/icon-dun.jpg") 0 center no-repeat;
+          background-size: 22px 24px;
+          padding-left: 30px;
+        }
+      }
+    }
+    .o-keyboard {
+      .o-keyboard-inner {
+        width: 100%;
+        overflow: hidden;
+        .k-num {
+          position: relative;
+          float: left;
+          width: 33.333333%;
+          height: 102px;
+          display: -webkit-box;
+          -webkit-box-align: center;
+          -webkit-box-pack: center;
+          font-size: 44px;
+          color: #606060;
+          border-bottom: 1px solid #e0e0e0;
+          &.k-num-last {
+            border: none;
+          }
+          &:after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: #e0e0e0;
+            content: "";
+          }
+          &:nth-child(3n):after {
+            display: none;
+          }
+          &.k-num-grey {
+            background: #bcbcbc;
+            img {
+              display: block;
+              width: 37px;
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
