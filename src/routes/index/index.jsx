@@ -3,10 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Dom} from 'public/libs/utils';
 import Layout from 'components/layerUI/Layout';
+import Axios from 'axios';
+import Swiper from 'react-id-swiper';
+import Test from '../../test/mockTest.js';
 
+
+/*--引入样式--*/
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
+import 'public/libs/swiper/swiper.min.css';
 import './index.scss';
+
 let domRoot = new Dom("page-index");
 
 
@@ -16,209 +23,369 @@ import APP from 'public/libs/APP';
 class Index extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      isLogin: false,
+      myPoint: "10000",
+      sysTime: "",
+      bannerList: [
+        {
+          imgUrc: "", //图片地址
+          linkUrl: "",//跳转地址
+          desc: ""    //描述文字
+        },
+        {
+          imgUrc: "", //图片地址
+          linkUrl: "",//跳转地址
+          desc: ""    //描述文字
+        },
+        {
+          imgUrc: "", //图片地址
+          linkUrl: "",//跳转地址
+          desc: ""    //描述文字
+        },
+        {
+          imgUrc: "", //图片地址
+          linkUrl: "",//跳转地址
+          desc: ""    //描述文字
+        }
+      ],
+      flashSale: [],
+      bannerBox: [],
+      recommend: [],
+      category: []
+    }
   }
 
   componentDidMount() {
-    console.log("页面渲染完成");
+    var self = this;
+    // 先从APP的缓存当中取出来，做些更新页面，然后再ajax获取数据
+    // 记得使用loading
+    // APP.LOADING("")  显示loading
+    // APP.CLOSE_LOADING()  隐藏loading
+
+    //从APP的缓存当中获取数据
+
+
+    //获取首页测试数据
+    Test.initIndex();
+
+    Axios.get('/activity/banner/appBannerList.do?channel=app_index')
+      .then(function (res) {
+        if (res.data.succ) {
+          var data = res.data.banners;
+          var bannerBoxArr = [];
+          if (data.a0003.length) {
+            bannerBoxArr.push(data.a0003[0]);
+          }
+          if (data.a0004.length) {
+            bannerBoxArr.push(data.a0004[0]);
+          }
+
+          self.setState({
+            bannerList: data.a0001,
+            flashSale: data.a0002,
+            bannerBox: bannerBoxArr,
+            recommend: data.a0005
+          })
+
+        } else {
+          APP.TOAST("服务器网线被挖断了", 1);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    //获取首页类别测试数据
+    Test.initIndexCategory();
+
+    Axios.get('/activity/goods/categoryList.do')
+      .then(function (res) {
+        if (res.data.stat) {
+          var data = res.data.categoryList;
+
+          self.setState({
+            category: data
+          })
+
+        } else {
+          APP.TOAST("服务器网线被挖断了", 1);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   /*跳转到我的积分页面*/
   JumpMyPoint() {
-    console.log("go 我的积分页面");
+    APP.JUMP_TO('myPoint.html')
+  }
+
+  /*跳转到兑换记录页面*/
+  JumpExchange() {
+    APP.JUMP_TO('exchangeRecord.html')
   }
 
   /*跳转到限时抢购页面*/
   JumpLimitSale() {
     APP.JUMP_TO("limitSale.html");
   }
+
   /*跳转到商品类别页面*/
-  JumpCategory() {
-    APP.JUMP_TO("category.html");
+  JumpCategory(cid) {
+    if(cid){
+      APP.JUMP_TO("category.html?categoryNo=" + cid);
+    }else{
+      APP.JUMP_TO("category.html");
+    }
+
+  }
+
+  /*跳转到商品详情页面*/
+  JumpGoodsDetails(id) {
+    APP.JUMP_TO("goodsDetails.html?goods=" + id);
+  }
+
+  /*---页面跳转---*/
+  JumpToUrl(url) {
+    APP.JUMP_TO(url);
+  }
+
+  componentDidUpdate() {
+
   }
 
   render() {
-    let self = this;
+    let
+      self = this,
+      stateData = self.state,
+      bannerHtm, flashHtm, bannerBoxHtm, recommendHtm, categoryHtm;
+
+
+    /*--首页banner内容--*/
+    if (stateData.bannerList.length > 0) {
+
+      /*--banner滚动配置参数--*/
+      const params = {
+        width: document.body.clientWidth,
+        centeredSlides: true,
+        paginationClickable: true,
+        grabCursor: true,
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true//修改swiper的父元素时，自动初始化swiper
+      };
+
+      var bannerItem = stateData.bannerList.map((item, index)=> {
+        let linkUrl = item.targetUrl;
+        return (<div onClick={self.JumpToUrl.bind(self,linkUrl)} key={index}>
+          <img src={item.picUrl}/>
+        </div>);
+      });
+
+      bannerHtm = <div className="scrollBanner">
+        <Swiper {...params}>
+          {bannerItem}
+        </Swiper>
+      </div>
+    }
+
+    /*--限时快抢--*/
+    if (stateData.flashSale.length > 0) {
+      var
+        flashSaleData = self.state.flashSale[0],
+        flashDataObj = flashSaleData.quickBuyInfo,
+        gPriceHtm, gPrice, gSale;
+      //判断是组合支付中的价格是否存在
+      gPrice = flashDataObj.unionPoint && flashDataObj.unionRmb ? flashDataObj.unionPoint + " + ￥" + flashDataObj.unionRmb : flashDataObj.pricePointDiscount;
+      gSale = flashDataObj.unionPointRegular && flashDataObj.unionRmbRegular ? flashDataObj.unionPointRegular + " + ￥" + flashDataObj.unionRmbRegular : flashDataObj.pricePointRegular;
+
+
+      if (flashDataObj.unionPointRegular != null || flashDataObj.unionRmbRegular != null && gSale != null) {
+        gPriceHtm = <del className="g-price">{gSale}</del>
+      }
+
+      flashHtm = <Layout onClick={self.JumpLimitSale.bind(self)} orient="column" className="flashSale">
+        <Layout className="flashSale-title" orient="row" align="center">
+          {flashSaleData.title} {flashDataObj.timesTitle}
+          <span>01:12:23</span>
+        </Layout>
+        <Layout className="flashSale-body" orient="row">
+          <Layout pack="center" align="center" className="f-img">
+            <img src={flashSaleData.quickBuyInfo.picIcon}/>
+          </Layout>
+          <Layout orient="column" className="f-intro goods-intro" flex>
+            <p className="g-name">{flashSaleData.quickBuyInfo.goodsTitle}</p>
+            <p className="g-sale">{gPrice}</p>
+            {gPriceHtm}
+          </Layout>
+        </Layout>
+      </Layout>;
+    }
+
+
+    /*--BannerBox--*/
+    if (stateData.bannerBox.length > 0) {
+
+      var bannerItemHtm = self.state.bannerBox.map((item, index)=> {
+        let linkUrl = item.targetUrl;
+        return (
+          <Layout className="bBox-item" onClick={self.JumpToUrl.bind(self,linkUrl)} key={index} align="center"
+                  pack="center" flex>
+            <img src={item.picUrl}/>
+          </Layout>
+        )
+      });
+
+      bannerBoxHtm = <Layout className="bannerBox" orient="row" align="center" pack="center">{bannerItemHtm}</Layout>;
+    }
+
+    /*--推荐模块recommend--*/
+    if (stateData.recommend.length > 0) {
+      var recommendData = self.state.recommend[0];
+      var rItemHtm = recommendData.hotSaleInfo.goodsList.map((item, index)=> {
+
+        //计算价格
+        var gPrice, gSale, gPriceHtm;
+        gSale = item.minUnion ? item.minUnion.unionPoint + " + ￥" + item.minUnion.unionRmb : item.pricePoint;
+        gPrice = item.maxUnionRegular ? item.maxUnionRegular.unionPoint + " + ￥" + item.maxUnionRegular.unionRmb : item.pricePointRegular;
+
+
+        if (item.maxUnionRegular != null || item.pricePointRegular != null) {
+          gPriceHtm = <del className="g-price">{gPrice}</del>
+        }
+
+
+        return (
+          <div onClick={self.JumpGoodsDetails.bind(self,item.goodsId)} key={index} className="r-item">
+            <div className="r-item-img">
+              <img src={item.picIcon}/>
+            </div>
+            <div className="r-item-intro goods-intro">
+              <p className="g-name">{item.goodsTitle}</p>
+              <p className="g-sale">{gSale}</p>
+              {gPriceHtm}
+            </div>
+          </div>
+        )
+      });
+
+
+      /*--更多--*/
+      var rItemMoreHtm = <div onClick={self.JumpCategory.bind(self)} className="r-item">
+        <div className="r-item-more">
+          <div className="r-item-inner">
+            <div className="r-item-more-box">
+              <i className="iconfont icon-rightcircleo"></i>
+              <p>查看全部</p>
+            </div>
+          </div>
+        </div>
+      </div>;
+
+      recommendHtm = <div className="recommend">
+        <div className="r-title">{recommendData.title}</div>
+        <div className="r-body g-swiper-list">
+          <div className="r-body-inner">
+            {rItemHtm}
+            {rItemMoreHtm}
+          </div>
+        </div>
+      </div>
+    }
+
+    /*--类别模块--*/
+    if (stateData.category.length > 0) {
+
+      categoryHtm = stateData.category.map((item, index)=> {
+
+        var GoodsBoxHtm;
+
+        if (item.goodsList.length > 0) {
+
+          var goodsHtm = item.goodsList.map((goods, index)=> {
+
+            //计算价格
+            var gPrice, gSale, gPriceHtm;
+            gSale = goods.minUnion ? goods.minUnion.unionPoint + " + ￥" + goods.minUnion.unionRmb : goods.pricePoint;
+            gPrice = goods.maxUnionRegular ? goods.maxUnionRegular.unionPoint + " + ￥" + goods.maxUnionRegular.unionRmb : goods.pricePointRegular;
+
+
+            if (goods.maxUnionRegular != null || goods.pricePointRegular != null) {
+              gPriceHtm = <del className="g-price">{gPrice}</del>
+            }
+
+
+            return (
+              <div onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} className="g-item" key={index}>
+                <div className="g-img">
+                  <img src={goods.picIcon}/>
+                </div>
+                <div className="g-intro goods-intro">
+                  <p className="g-name">{goods.goodsTitle}</p>
+                  <p className="g-sale">{gSale}</p>
+
+                </div>
+              </div>
+            )
+          });
+
+          /*--更多--*/
+          var rItemMoreHtm = <div onClick={self.JumpCategory.bind(self,item.categoryNo)} className="g-item">
+            <div className="r-item-more">
+              <div className="r-item-inner">
+                <div className="r-item-more-box">
+                  <i className="iconfont icon-rightcircleo"></i>
+                  <p>查看全部</p>
+                </div>
+              </div>
+            </div>
+          </div>;
+
+          GoodsBoxHtm = <div className="c-body g-swiper-list">
+            <div className="g-body-inner">
+              {goodsHtm}
+              {rItemMoreHtm}
+            </div>
+          </div>
+        }
+
+
+        return (
+          <div className="categoryBox" key={index}>
+            <div onClick={self.JumpCategory.bind(self,item.categoryNo)} className="c-title">
+              <img src={item.picBig}/>
+            </div>
+            {GoodsBoxHtm}
+          </div>
+        )
+      })
+    }
+
+
+    /*--页面渲染--*/
     return (
       <div className="index-warpper">
         {/*图片滚动*/}
-        <div className="scrollBanner">
-          <img src={require('../../public/imgs/test/1.jpg')}/>
-        </div>
+        {bannerHtm}
         {/*我的积分*/}
-        <Layout onClick={self.JumpMyPoint.bind(self)} orient="row" className="pointBox">
-          <Layout flex align="center" className="point-left">我的积分<span>1000</span></Layout>
-          <Layout flex align="center" className="point-right">兑换记录</Layout>
+        <Layout orient="row" className="pointBox">
+          <Layout onClick={self.JumpMyPoint.bind(self)} flex align="center"
+                  className="point-left">我的积分<span>{self.state.myPoint}</span></Layout>
+          <Layout onClick={self.JumpExchange.bind(self)} flex align="center" className="point-right">兑换记录</Layout>
         </Layout>
         {/*其它坑位*/}
         <div className="chainBox">外链盒子</div>
-        {/*限时抢购*/}
-        <Layout onClick={self.JumpLimitSale.bind(self)} orient="column" className="flashSale">
-          <Layout className="flashSale-title" orient="row" align="center">
-            限时抢购 10点场
-            <span>01:12:23</span>
-          </Layout>
-          <Layout className="flashSale-body" orient="row">
-            <Layout pack="center" align="center" className="f-img">
-              <img src={require('../../public/imgs/test/2.jpg')}/>
-            </Layout>
-            <Layout orient="column" className="f-intro goods-intro" flex>
-              <p className="g-name">传世琅琊国 马龙系列</p>
-              <p className="g-sale">10000</p>
-              <del className="g-price">30000</del>
-            </Layout>
-          </Layout>
-        </Layout>
-        {/*banner类别*/}
-        <Layout className="bannerBox" orient="row" align="center" pack="center">
-          <Layout align="center" pack="center" flex>
-            <img src={require('../../public/imgs/test/3.jpg')}/>
-          </Layout>
-          <Layout align="center" pack="center" flex>
-            <img src={require('../../public/imgs/test/4.jpg')}/>
-          </Layout>
 
-        </Layout>
+        {/*限时抢购*/}
+        {flashHtm}
+        {/*banner类别*/}
+        {bannerBoxHtm}
+
         {/*推荐栏位*/}
-        <div className="recommend">
-          <div className="r-title">热卖推荐</div>
-          <div className="r-body g-swiper-list">
-            <div className="r-body-inner">
-              <div className="r-item">
-                <div className="r-item-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="r-item-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                  <del className="g-price">30000</del>
-                </div>
-              </div>
-              <div className="r-item">
-                <div className="r-item-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="r-item-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系龙系</p>
-                  <p className="g-sale">10000</p>
-                  <del className="g-price">30000</del>
-                </div>
-              </div>
-              <div className="r-item">
-                <div className="r-item-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="r-item-intro goods-intro">
-                  <p className="g-name">传世琅系</p>
-                  <p className="g-sale">10000</p>
-                  <del className="g-price">30000</del>
-                </div>
-              </div>
-              <div className="r-item">
-                <div className="r-item-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="r-item-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                  <del className="g-price">30000</del>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {recommendHtm}
         {/*类别*/}
-        <div className="categoryBox">
-          <div onClick={self.JumpCategory.bind(self)} className="c-title">
-            <img src={require('../../public/imgs/test/5.jpg')}/>
-          </div>
-          <div className="c-body g-swiper-list">
-            <div className="g-body-inner">
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/*类别*/}
-        <div className="categoryBox">
-          <div className="c-title">
-            <img src={require('../../public/imgs/test/5.jpg')}/>
-          </div>
-          <div className="c-body g-swiper-list">
-            <div className="g-body-inner">
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-              <div className="g-item">
-                <div className="g-img">
-                  <img src={require('../../public/imgs/test/2.jpg')}/>
-                </div>
-                <div className="g-intro goods-intro">
-                  <p className="g-name">传世琅琊国马龙系</p>
-                  <p className="g-sale">10000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {categoryHtm}
       </div>);
   }
 }

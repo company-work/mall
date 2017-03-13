@@ -57,11 +57,14 @@
     "zepto.js": "^1.1.6"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "core-js": "^2.0.0",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.5.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-id-swiper": "^1.3.1"
+    "react-id-swiper": "^1.3.1",
+    "react-infinite-scroller": "^1.0.7"
   }
 }

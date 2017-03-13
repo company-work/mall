@@ -3,9 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Dom} from 'public/libs/utils';
 import Layout from 'components/layerUI/Layout';
+import InterFace from 'public/libs/interFace.js';
+import Axios from 'axios';
+import Swiper from 'react-id-swiper';
+import Test from '../../test/mockTest.js';
 
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
+import 'public/libs/swiper/swiper.min.css';
 import './goodsDetails.scss';
 let domRoot = new Dom("page-goodsDetails");
 
@@ -17,12 +22,30 @@ class GoodsDetails extends React.Component {
   constructor() {
     super();
     this.state = {
+      goodsInfo: {},
       dialogFlag: false
     }
   }
 
   componentDidMount() {
-    console.log("页面渲染完成");
+    var self = this;
+    Test.initGoodsDetails();
+    Axios.get(InterFace.initGoodsDetailsUrl)
+      .then(function (res) {
+        if (res.data.stat == 'ok') {
+          var data = res.data;
+          console.log(data);
+          self.setState({
+            goodsInfo: data.goodsInfo
+          })
+        }
+        else {
+          APP.TOAST("服务器网线被挖断了", 1);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   Buy() {
@@ -34,7 +57,7 @@ class GoodsDetails extends React.Component {
     }
   }
 
-  BuyClose(){
+  BuyClose() {
     let self = this;
     if (self.state.dialogFlag) {
       self.setState({
@@ -44,8 +67,8 @@ class GoodsDetails extends React.Component {
   }
 
   render() {
-    let self = this;
-    let dialogHtm;
+    let self = this, state = self.state, goodsInfo = state.goodsInfo;
+    let dialogHtm, bannerHtm;
     let sCls = "g-content";
     if (self.state.dialogFlag) {
       dialogHtm = <div className="g-buy">
@@ -64,7 +87,8 @@ class GoodsDetails extends React.Component {
               <div className="g-stock">库存999件</div>
               <div className="g-choose">已选”绿色“”2-1200“</div>
             </div>
-            <div onClick={self.BuyClose.bind(self)} className="g-buy-close"><i className="iconfont icon-close"></i></div>
+            <div onClick={self.BuyClose.bind(self)} className="g-buy-close"><i className="iconfont icon-close"></i>
+            </div>
           </Layout>
           <Layout flex orient="column" className="buy-props">
             <div className="b-type buy-color">
@@ -117,34 +141,60 @@ class GoodsDetails extends React.Component {
     }
 
 
+    const params = {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      observer: true,//修改swiper自己或子元素时，自动初始化swiper
+      observeParents: true//修改swiper的父元素时，自动初始化swiper
+    };
+
+    //商品图片轮播
+    if (goodsInfo.coveList) {
+      bannerHtm = goodsInfo.coveList.map((item, index)=> {
+        return (
+          <div key={index} className="g-img" alt={item.imgTitle}>
+            <img src={item.goodsImg}/>
+          </div>
+        )
+      });
+    }
+
+    //计算展示商品的价格
+    var gPrice1,gPrice2;
+    if (goodsInfo.minUnion) {
+      gPrice1 = goodsInfo.maxPoint ? goodsInfo.minPoint + " - " + goodsInfo.maxPoint : goodsInfo.minPoint;
+      gPrice2 = goodsInfo.maxUnion ? goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb + " - " + goodsInfo.maxPoint.unionPoint + " + ￥" + goodsInfo.maxPoint.unionRmb : (goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb);
+    }
+
+    //判断是不是特别的产品，有活动标识
+    var gTips;
+    if(goodsInfo.isShowTeJiao && goodsInfo.isShowTeJiao==='yes'){
+      gTips= <span>{goodsInfo.picTop}</span>;
+    }
+
+    //插入商品介绍HTML
+    if (document.querySelector("#gBody")) {
+      document.querySelector("#gBody").innerHTML = goodsInfo.goodsIntro;
+    }
+
+
     return (
       <div className="goodsDetails-warp">
         <div className={sCls}>
           <div className="g-title">
-            <div className="g-img">
-              <img src={require('../../public/imgs/test/7.jpg')}/>
-            </div>
+            {/*商品轮播图片*/}
+            <Swiper {...params}>
+              {bannerHtm}
+            </Swiper>
             <div className="g-intro">
-              <div className="g-name">Carat砖石汤锅24cm</div>
-              <div className="g-sale">10000 + ￥200<span>限时抢购</span></div>
-              <del className="g-price">10000 + ￥160</del>
+              <div className="g-name">{goodsInfo.goodsTitle}</div>
+              <div className="g-sale">{gPrice1}{gTips}</div>
+              <div className="g-price">{gPrice2}</div>
             </div>
           </div>
           <div className="g-desc">
             <h3>商品介绍</h3>
-            <div className="g-desc-body">
-              Carat系列锅具的设计灵感来源于闪亮的钻石，第一次的设计中锅钮材质是如香水瓶盖的ABS或SAN，但亚克力不耐高温后改成不锈钢材质，更好的还原钻石棱角质感。为体现了“厨房中闪耀的宝石”这一主题搭配的锅盖呼应钻石的多角形状，整个厨房也随之晶莹闪亮。
-              内表面陶瓷安全涂层，采用自然界天然矿物中提取的陶瓷喷涂技术。添加紫水晶，与现有的一般喷涂相比，提高抗菌能力抗霉能力。
-            </div>
-          </div>
-          <div className="g-details">
-            <h3>宝贝详情</h3>
-            <div className="g-details-body">
-              <img src={require('../../public/imgs/test/8.jpg')}/>
-              <img src={require('../../public/imgs/test/7.jpg')}/>
-              <img src={require('../../public/imgs/test/6.jpg')}/>
-              <img src={require('../../public/imgs/test/5.jpg')}/>
-            </div>
+            <div id="gBody" className="g-desc-body"></div>
           </div>
           <div className="g-btn-submit" onClick={self.Buy.bind(self)}>立即购买</div>
         </div>

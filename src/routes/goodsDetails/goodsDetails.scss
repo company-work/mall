@@ -8,7 +8,6 @@
     overflow: hidden;
   }
   .g-title {
-    height: 620px;
     background: #fff;
     .g-img {
       display: -webkit-box;
@@ -21,20 +20,20 @@
       }
     }
     .g-intro {
-      height: 180px;
       box-sizing: border-box;
-      padding: 30px 30px 0;
+      padding: 30px;
       .g-name {
-        font-size: 24px;
-        height: 50px;
-        line-height: 50px;
+        font-size: 28px;
+        line-height: 30px;
+        margin-bottom: 10px;
       }
       .g-sale {
-        background: url("../../public/imgs/icon-2.jpg") 0 center no-repeat;
+        position: relative;
+        background: url("../../public/imgs/icon-2.jpg") 0 4px no-repeat;
         background-size: 17px 18px;
         padding-left: 30px;
         color: #ff991c;
-        font-size: 18px;
+        font-size: 24px;
         span{
           display: inline-block;
           border-radius: 4px;
@@ -55,7 +54,7 @@
         background-size: 17px 18px;
         padding-left: 30px;
         color: #999;
-        font-size: 16px;
+        font-size: 22px;
       }
     }
   }
@@ -63,7 +62,7 @@
   .g-desc {
     margin-top: 20px;
     background: #fff;
-    padding: 40px 30px 30px;
+    padding: 40px 30px 160px;
     h3 {
       font-size: 24px;
       font-weight: normal;
@@ -76,30 +75,23 @@
       line-height: 45px;
       font-weight: normal;
       text-align: justify;
-    }
-  }
-  .g-details {
-    background: #fff;
-    padding-bottom: 160px;
-    h3 {
-      font-size: 24px;
-      font-weight: normal;
-      padding: 0 30px 15px;
-      height: 50px;
-      line-height: 50px;
-    }
-    .g-details-body {
-      img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
+
+      p{
         margin-bottom: 10px;
-        &:last-child {
-          margin-bottom: 0;
+        img {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }
   }
+
+
   .g-btn-submit {
     position: fixed;
     left: 0;
@@ -121,6 +113,7 @@
     bottom: 0;
     right:0;
     background: rgba(0,0,0,0.7);
+    z-index: 9999;
     .g-buy-inner{
       position: absolute;
       left: 0;

@@ -29,7 +29,7 @@ class LimitSale extends React.Component {
 
   render() {
     let self = this;
-    var params = {
+    const params = {
       slidesPerView: 4,
       centeredSlides: true,
       paginationClickable: true,
@@ -40,10 +40,7 @@ class LimitSale extends React.Component {
         <Layout orient="column" className="limit-tabs">
           <div className="tabs-title">
             <div className="tabs-title-inner">
-              <Swiper centeredSlides={params.centeredSlides}
-                      slidesPerView={params.slidesPerView}
-                      grabCursor={params.grabCursor}
-                      paginationClickable={params.paginationClickable}>
+              <Swiper {...params}>
                 <div className="t-item">
                   <p>22:00</p>
                   <div>已开抢</div>

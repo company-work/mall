@@ -58,22 +58,59 @@ html {
   input::-webkit-input-placeholder {
     color: #777;
   }
-
-  /*  img{
-      display: block;
-      width: 100%;
-      max-width: 100%;
-    }*/
+  .clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+  }
+  .pull-left {
+    display: inline;
+    float: left;
+  }
+  .pull-right {
+    display: inline;
+    float: right;
+  }
 
 }
 
-.mt20{
+.mt20 {
   margin-top: 20px;
 }
 
-#root {
+body {
   background: #f2f2f5;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e13602;
+} /* 滚动条的滑轨背景颜色 */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+} /* 滑块颜色 */
+::-webkit-scrollbar-button {
+  background-color: #e13602;
+} /* 滑轨两头的监听按钮颜色 */
+::-webkit-scrollbar-corner {
+  background-color: #e13602;
+}
+
+#root {
+
   color: #202020;
   font-size: 24px;
   height: 100%;
+}
+
+.icon-point {
+  background: url("../imgs/icon-2.jpg") 0 center no-repeat;
+  background-size: 17px 18px;
+  padding-left: 24px;
+}
+
+.icon-point-grey {
+  background: url("../imgs/icon-2-grey.jpg") 0 center no-repeat;
+  background-size: 17px 18px;
 }

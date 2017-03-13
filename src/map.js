@@ -29,6 +29,16 @@ let map = {
     src: "payResult",
     tpl: "payResult.html",
     version: "1.0.0"
+  },
+  'myPoint': {
+    src: "myPoint",
+    tpl: "myPoint.html",
+    version: "1.0.0"
+  },
+  'exchangeRecord': {
+    src: "exchangeRecord",
+    tpl: "exchangeRecord.html",
+    version: "1.0.0"
   }
 };
 

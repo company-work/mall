@@ -131,6 +131,13 @@
   @include pack(end);
 }
 
+@mixin box-hpc {
+  @include box;
+  @include boxSizing();
+  @include orient(horizontal);
+  @include pack(center);
+}
+
 @mixin box-hpsac {
   @include box;
   @include boxSizing();
@@ -215,6 +222,10 @@
 .layer_hpe {
   @include box-hpe;
 }
+.layer_hpc {
+  @include box-hpc;
+}
+
 
 
 .layer_hpsac {
