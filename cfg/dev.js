@@ -21,9 +21,11 @@ let config = Object.assign({}, baseConfig, {
   entry: entryArr,
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin("styles.css"),
-    new webpack.NoErrorsPlugin()
-
+    new webpack.NoErrorsPlugin(),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../manifest.json')
+    })
   ],
   module: defaultSettings.getDefaultModules()
 });

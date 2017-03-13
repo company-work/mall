@@ -10,6 +10,7 @@
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
     "start": "node server.js --env=dev",
+    "common": "set NODE_ENV.REACT_WEBPACK_ENV=dev && set NODE_ENV=production && webpack -p --config ./cfg/dll.js",
     "dev": "set NODE_ENV.REACT_WEBPACK_ENV=dev && webpack-dev-server --hot --quiet --config ./cfg/dev.js"
   },
   "repository": "",

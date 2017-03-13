@@ -17,8 +17,8 @@ var isProduction = function () {
 };
 
 const devPublicPath = "/";
-const proPublicPath = "http://ami-static.b0.upaiyun.com/loan-record/5.1.2/";
-//const proPublicPath = "./";
+//const proPublicPath = "http://ami-static.b0.upaiyun.com/Mall/1.0.0/";
+const proPublicPath = "./";
 
 function getDefaultModules() {
   return {
@@ -80,8 +80,8 @@ function getDefaultModules() {
 
 module.exports = {
   srcPath: srcPath,
-  //publicPath: isProduction() ? proPublicPath : devPublicPath,
-  publicPath: devPublicPath,
+  publicPath: isProduction() ? proPublicPath : devPublicPath,
+  //publicPath: devPublicPath,
   host: host.ip,
   port: dfltPort,
   getDefaultModules: getDefaultModules

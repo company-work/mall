@@ -13,8 +13,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.join(__dirname, '../dist/assets'),
-    //publicPath: defaultSettings.publicPath
-    chunkFilename: "[name].js"
+    publicPath: defaultSettings.publicPath
   },
   devServer: {
     inline: true,

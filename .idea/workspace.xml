@@ -2,22 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0454bd5e-15af-4068-9bb0-40801775d18a" name="默认的" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log.2223185883" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log.27493345" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/MallUI/react-swiper.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/base.js" afterPath="$PROJECT_DIR$/cfg/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/defaults.js" afterPath="$PROJECT_DIR$/cfg/defaults.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/dev.js" afterPath="$PROJECT_DIR$/cfg/dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/dist.js" afterPath="$PROJECT_DIR$/cfg/dist.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LayerUI/layer.scss" afterPath="$PROJECT_DIR$/src/components/LayerUI/layer.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/map.js" afterPath="$PROJECT_DIR$/src/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/style/base.scss" afterPath="$PROJECT_DIR$/src/public/style/base.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/libs/interFace.js" afterPath="$PROJECT_DIR$/src/public/libs/interFace.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.html" afterPath="$PROJECT_DIR$/src/routes/category/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.jsx" afterPath="$PROJECT_DIR$/src/routes/category/category.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.scss" afterPath="$PROJECT_DIR$/src/routes/category/category.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" afterPath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.scss" afterPath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" afterPath="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" afterPath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.html" afterPath="$PROJECT_DIR$/src/routes/index/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.jsx" afterPath="$PROJECT_DIR$/src/routes/index/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.scss" afterPath="$PROJECT_DIR$/src/routes/index/index.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/limitSale/limitSale.jsx" afterPath="$PROJECT_DIR$/src/routes/limitSale/limitSale.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/limitSale/limitSale.scss" afterPath="$PROJECT_DIR$/src/routes/limitSale/limitSale.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" afterPath="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" afterPath="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/order/order.html" afterPath="$PROJECT_DIR$/src/routes/order/order.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/payResult/payResult.html" afterPath="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
     </list>
     <ignored path="mall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,86 +39,110 @@
     <favorites_list name="mall" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.51715684">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="myPoint.jsx" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.jsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="exchangeRecord.jsx" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.59802955">
-                  <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#1550#2773#0" expanded="false" />
-                    <element signature="e#1725#2144#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="mockTest.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/mockTest.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="629" column="19" selection-start-line="629" selection-start-column="19" selection-end-line="629" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#231#4792#0" expanded="false" />
-                    <element signature="e#3023#3723#0" expanded="false" />
-                    <element signature="e#3741#4147#0" expanded="false" />
-                    <element signature="e#4165#4571#0" expanded="false" />
-                    <element signature="e#4915#8561#0" expanded="false" />
-                    <element signature="e#8589#9371#0" expanded="false" />
-                    <element signature="e#9394#13168#0" expanded="false" />
-                    <element signature="e#9534#12885#0" expanded="false" />
-                    <element signature="e#13185#15316#0" expanded="false" />
-                    <element signature="e#21417#24443#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="exchangeRecord.scss" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.03962461">
-                  <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/routes/index/index.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-3.392857">
-                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#91#599#0" expanded="false" />
-                    <element signature="e#956#1135#0" expanded="false" />
-                    <element signature="e#1151#1451#0" expanded="false" />
-                    <element signature="e#3073#3868#0" expanded="false" />
-                    <element signature="e#4122#4296#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="category.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/category/category.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="limitSale.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myPoint.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/order/order.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="payResult.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dist.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cfg/dist.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4679803">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cfg/base.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defaults.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cfg/defaults.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+              <folding>
+                <element signature="e#720#1867#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exchangeRecord.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goodsDetails.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -132,57 +158,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/page.js" />
-        <option value="$PROJECT_DIR$/page.config.js" />
-        <option value="$PROJECT_DIR$/src/index/index.js" />
-        <option value="$PROJECT_DIR$/src/category/category.jsx" />
         <option value="$PROJECT_DIR$/src/category/category.html" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/src/index/index.html" />
         <option value="$PROJECT_DIR$/public/libs/utils.js" />
         <option value="$PROJECT_DIR$/src/index/index.jsx" />
-        <option value="$PROJECT_DIR$/src/public/libs/utils.js" />
         <option value="$PROJECT_DIR$/src/components/LayerUI/layer.sass" />
         <option value="$PROJECT_DIR$/cfg/page.config.js" />
-        <option value="$PROJECT_DIR$/cfg/base.js" />
         <option value="$PROJECT_DIR$/src/components/LayerUI/Layout.jsx" />
         <option value="$PROJECT_DIR$/src/public/libs/APP.js" />
         <option value="$PROJECT_DIR$/src/routes/limitsale/limitsale.jsx" />
-        <option value="$PROJECT_DIR$/cfg/dev.js" />
-        <option value="$PROJECT_DIR$/cfg/defaults.js" />
         <option value="$PROJECT_DIR$/src/routes/order/order.scss" />
         <option value="$PROJECT_DIR$/src/routes/order/order.jsx" />
-        <option value="$PROJECT_DIR$/src/routes/order/order.html" />
-        <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
-        <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
-        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
         <option value="$PROJECT_DIR$/src/routes/payResult/payResult.jsx" />
         <option value="$PROJECT_DIR$/src/routes/payResult/payResult.scss" />
         <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.scss" />
         <option value="$PROJECT_DIR$/test/initIndex.json" />
-        <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
         <option value="$PROJECT_DIR$/src/map.js" />
         <option value="$PROJECT_DIR$/src/components/LayerUI/layer.scss" />
         <option value="$PROJECT_DIR$/test/initIndex.js" />
         <option value="$PROJECT_DIR$/test/mockTest.js" />
-        <option value="$PROJECT_DIR$/src/routes/index/index.html" />
         <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.jsx" />
         <option value="$PROJECT_DIR$/src/routes/index/index.scss" />
         <option value="$PROJECT_DIR$/src/routes/index/index.jsx" />
-        <option value="$PROJECT_DIR$/src/routes/category/category.html" />
         <option value="$PROJECT_DIR$/src/public/style/base.scss" />
         <option value="$PROJECT_DIR$/src/routes/category/category.scss" />
         <option value="$PROJECT_DIR$/src/routes/category/category.jsx" />
         <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.scss" />
         <option value="$PROJECT_DIR$/src/routes/payResult/1.js" />
-        <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
         <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.scss" />
         <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" />
-        <option value="$PROJECT_DIR$/src/public/libs/interFace.js" />
         <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.jsx" />
         <option value="$PROJECT_DIR$/src/test/mockTest.js" />
         <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.scss" />
         <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx" />
+        <option value="$PROJECT_DIR$/cfg/base.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/public/libs/interFace.js" />
+        <option value="$PROJECT_DIR$/src/public/libs/utils.js" />
+        <option value="$PROJECT_DIR$/cfg/dev.js" />
+        <option value="$PROJECT_DIR$/cfg/dll.js" />
+        <option value="$PROJECT_DIR$/manifest.json" />
+        <option value="$PROJECT_DIR$/src/routes/index/index.html" />
+        <option value="$PROJECT_DIR$/src/routes/category/category.html" />
+        <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
+        <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
+        <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
+        <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
+        <option value="$PROJECT_DIR$/src/routes/order/order.html" />
+        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
+        <option value="$PROJECT_DIR$/cfg/defaults.js" />
+        <option value="$PROJECT_DIR$/cfg/dist.js" />
       </list>
     </option>
   </component>
@@ -346,7 +372,7 @@
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14014752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17281349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -379,36 +405,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/dist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -431,14 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15400203">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cfg/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13103448">
@@ -450,21 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/libs/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76824456">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -481,29 +459,6 @@
         <state vertical-scroll-proportion="0.5246548">
           <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/page.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29980275">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/dev.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/defaults.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -561,27 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/order/order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.428571">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.428571">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07707911">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2623274">
@@ -594,21 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.178572">
           <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7142856">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73221344">
-          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -641,14 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/libs/APP.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="218" column="7" selection-start-line="218" selection-start-column="2" selection-end-line="218" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.3392857">
@@ -659,22 +570,6 @@
             <element signature="e#1876#1902#0" expanded="false" />
             <element signature="e#2023#2203#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19250253">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/category/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,14 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19250253">
-          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.785714">
@@ -769,14 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/libs/interFace.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24707413">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/index/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6176853">
@@ -791,14 +670,6 @@
             <element signature="e#2536#2573#0" expanded="false" />
             <element signature="e#8583#8664#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25641027">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,9 +695,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/mockTest.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03962461">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#1550#2773#0" expanded="false" />
+            <element signature="e#1725#2144#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/mockTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87980294">
           <caret line="629" column="19" selection-start-line="629" selection-start-column="19" selection-end-line="629" selection-end-column="19" />
           <folding>
             <element signature="e#231#4792#0" expanded="false" />
@@ -843,22 +741,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.scss">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03962461">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        <state vertical-scroll-proportion="-8.821428">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
+    <entry file="file://$PROJECT_DIR$/src/public/libs/APP.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59802955">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/libs/interFace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/libs/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/page.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/dev.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="27" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/dll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.571428">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.107143">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/category/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/order/order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/defaults.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
           <folding>
-            <element signature="e#1550#2773#0" expanded="false" />
-            <element signature="e#1725#2144#0" expanded="false" />
+            <element signature="e#720#1867#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/dist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4679803">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
