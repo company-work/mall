@@ -11,5 +11,6 @@ module.exports = {
   initBuyInfo:"/activity/goods/selectSku.do",
   initOrderDetails:"/activity/order/orderDetail.do",
   initMyPointUrl:"/activity/pointm/pntDetail.do",
-  initExchangeUrl:"/activity/order/list.do"
+  initExchangeUrl:"/activity/order/list.do",
+  initLimitSaleUrl:"/activity/topic/specialTopic.do"
 };

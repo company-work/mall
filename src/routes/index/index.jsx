@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import {Dom} from 'public/libs/utils';
 import Layout from 'components/layerUI/Layout';
 import Axios from 'axios';
+import InterFace from 'public/libs/interFace.js';
 import Swiper from 'react-id-swiper';
 import Test from '../../test/mockTest.js';
 
@@ -19,11 +20,15 @@ let domRoot = new Dom("page-index");
 
 import APP from 'public/libs/APP';
 
+window.countDownTimeOut = null;
+window.countdowntime = "00:00:00";
+
 //每个页面都作为一个组件
 class Index extends React.Component {
   constructor() {
     super();
     this.state = {
+      countDown: "",
       isLogin: false,
       myPoint: "10000",
       sysTime: "",
@@ -60,18 +65,45 @@ class Index extends React.Component {
     var self = this;
     // 先从APP的缓存当中取出来，做些更新页面，然后再ajax获取数据
     // 记得使用loading
-    // APP.LOADING("")  显示loading
+    //
     // APP.CLOSE_LOADING()  隐藏loading
 
     //从APP的缓存当中获取数据
 
+    //TOAST,type=0（对）,1（错）,2（惊叹号）,3(没有）
+    //APP.TOAST("12",1);
+
+    //var cacheData = APP.GET_CACHE('indexBannerData');
+
+
+    /*
+
+     APP.CONFIRM("温馨提示", "提示的内容", function (data) {
+     var res = data.response,
+     btnIndex = res.buttonIndex;
+     switch (btnIndex) {
+     case 0:
+     alert("您取消了");
+     break;
+     case 1:
+     alert("您确定了");
+     break;
+     }
+     });
+
+     */
+
+    APP.SET_REFRESH();
 
     //获取首页测试数据
     Test.initIndex();
-
-    Axios.get('/activity/banner/appBannerList.do?channel=app_index')
+    APP.LOADING("加载中...");
+    Axios.get(InterFace.initIndexUrl)
       .then(function (res) {
         if (res.data.succ) {
+          APP.CLOSE_LOADING();
+
+
           var data = res.data.banners;
           var bannerBoxArr = [];
           if (data.a0003.length) {
@@ -80,6 +112,9 @@ class Index extends React.Component {
           if (data.a0004.length) {
             bannerBoxArr.push(data.a0004[0]);
           }
+
+          APP.SAVE_CACHE('indexBannerData', JSON.stringify(data));
+
 
           self.setState({
             bannerList: data.a0001,
@@ -93,13 +128,15 @@ class Index extends React.Component {
         }
       })
       .catch(function (error) {
+        APP.CLOSE_LOADING();
+        APP.TOAST(error, 2);
         console.log(error);
       });
 
     //获取首页类别测试数据
     Test.initIndexCategory();
 
-    Axios.get('/activity/goods/categoryList.do')
+    Axios.get(InterFace.initIndexCategoryUrl)
       .then(function (res) {
         if (res.data.stat) {
           var data = res.data.categoryList;
@@ -119,12 +156,28 @@ class Index extends React.Component {
 
   /*跳转到我的积分页面*/
   JumpMyPoint() {
-    APP.JUMP_TO('myPoint.html')
+    APP.ISLOGIN(function (data) {
+      var res = data.response,
+        isLogin = res.isLogin;
+      if (isLogin) {
+        APP.JUMP_TO('myPoint.html');
+      } else {
+        APP.LOGIN()
+      }
+    });
   }
 
   /*跳转到兑换记录页面*/
   JumpExchange() {
-    APP.JUMP_TO('exchangeRecord.html')
+    APP.ISLOGIN(function (data) {
+      var res = data.response,
+        isLogin = res.isLogin;
+      if (isLogin) {
+        APP.JUMP_TO('exchangeRecord.html')
+      } else {
+        APP.LOGIN()
+      }
+    });
   }
 
   /*跳转到限时抢购页面*/
@@ -134,12 +187,11 @@ class Index extends React.Component {
 
   /*跳转到商品类别页面*/
   JumpCategory(cid) {
-    if(cid){
+    if (cid) {
       APP.JUMP_TO("category.html?categoryNo=" + cid);
-    }else{
+    } else {
       APP.JUMP_TO("category.html");
     }
-
   }
 
   /*跳转到商品详情页面*/
@@ -150,6 +202,50 @@ class Index extends React.Component {
   /*---页面跳转---*/
   JumpToUrl(url) {
     APP.JUMP_TO(url);
+  }
+
+  /*---倒计时---*/
+  countDown(time) {
+    var self = this;
+    var theTime = parseInt(time);// 秒
+    var theTime1 = "00";// 分
+    var theTime2 = "00";// 小时
+    if (theTime > 60) {
+      theTime1 = parseInt(theTime / 60);
+      theTime = parseInt(theTime % 60);
+      if (theTime1 > 60) {
+        theTime2 = parseInt(theTime1 / 60);
+        theTime1 = parseInt(theTime1 % 60);
+      }
+    }
+
+    var result = parseInt(theTime) > 9 ? parseInt(theTime) : "0" + parseInt(theTime);
+    if (theTime1 > 0) {
+      result = (parseInt(theTime1) > 9 ? parseInt(theTime1) : "0" + parseInt(theTime1)) + ":" + result;
+    } else {
+      result = "00:" + result;
+    }
+    if (theTime2 > 0) {
+      result = (parseInt(theTime2) > 9 ? parseInt(theTime2) : "0" + parseInt(theTime2)) + ":" + result;
+    } else {
+      result = "00:" + result;
+    }
+    if (time > 0) {
+      if (document.querySelector("#cDownTime")) {
+        document.querySelector("#cDownTime").innerHTML = result;
+      }
+    } else {
+      if (document.querySelector("#cDownTime")) {
+        document.querySelector("#cDownTime").innerHTML = "00:00:00";
+      }
+      return false;
+    }
+
+    time--;
+    if (countDownTimeOut) clearTimeout(countDownTimeOut);
+    countDownTimeOut = setTimeout(function () {
+      self.countDown(time);
+    }, 1000);
   }
 
   componentDidUpdate() {
@@ -169,6 +265,9 @@ class Index extends React.Component {
       /*--banner滚动配置参数--*/
       const params = {
         width: document.body.clientWidth,
+        autoplay: 2500,
+        speed: 500,
+        autoplayDisableOnInteraction: false,
         centeredSlides: true,
         paginationClickable: true,
         grabCursor: true,
@@ -205,10 +304,15 @@ class Index extends React.Component {
         gPriceHtm = <del className="g-price">{gSale}</del>
       }
 
+      //console.log();
+
+      self.countDown(flashDataObj.countTime / 1000);
+
+
       flashHtm = <Layout onClick={self.JumpLimitSale.bind(self)} orient="column" className="flashSale">
         <Layout className="flashSale-title" orient="row" align="center">
           {flashSaleData.title} {flashDataObj.timesTitle}
-          <span>01:12:23</span>
+          <span id="cDownTime">00:00:00</span>
         </Layout>
         <Layout className="flashSale-body" orient="row">
           <Layout pack="center" align="center" className="f-img">
@@ -271,6 +375,12 @@ class Index extends React.Component {
       });
 
 
+      const reParams = {
+        slidesPerView: "auto",
+        freeMode: true
+      };
+
+
       /*--更多--*/
       var rItemMoreHtm = <div onClick={self.JumpCategory.bind(self)} className="r-item">
         <div className="r-item-more">
@@ -287,8 +397,10 @@ class Index extends React.Component {
         <div className="r-title">{recommendData.title}</div>
         <div className="r-body g-swiper-list">
           <div className="r-body-inner">
-            {rItemHtm}
-            {rItemMoreHtm}
+            <Swiper {...reParams}>
+              {rItemHtm}
+              {rItemMoreHtm}
+            </Swiper>
           </div>
         </div>
       </div>
@@ -330,6 +442,13 @@ class Index extends React.Component {
             )
           });
 
+
+          const caParams = {
+            slidesPerView: "auto",
+            freeMode: true
+          };
+
+
           /*--更多--*/
           var rItemMoreHtm = <div onClick={self.JumpCategory.bind(self,item.categoryNo)} className="g-item">
             <div className="r-item-more">
@@ -344,8 +463,10 @@ class Index extends React.Component {
 
           GoodsBoxHtm = <div className="c-body g-swiper-list">
             <div className="g-body-inner">
-              {goodsHtm}
-              {rItemMoreHtm}
+              <Swiper {...caParams}>
+                {goodsHtm}
+                {rItemMoreHtm}
+              </Swiper>
             </div>
           </div>
         }
@@ -392,8 +513,11 @@ class Index extends React.Component {
 ;
 
 
-ReactDOM.render(
-  <Index />,
-  domRoot.root()
-);
+ReactDOM
+  .render(
+    <Index />,
+    domRoot
+      .root()
+  )
+;
 

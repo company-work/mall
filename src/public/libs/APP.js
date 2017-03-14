@@ -48,6 +48,29 @@ module.exports = {
     isWinClient: navigator.userAgent.indexOf('WinClient') > -1
   },
   DEVICE_INFO: null,
+  getLocParams: function (name) {
+    var href = window.location.href,
+      subIndex = href.indexOf("?"),
+      paramsObj = {};
+    if (subIndex != -1) {
+      var params = href.substr(subIndex + 1);
+      var paramsMany = params.indexOf("&");
+      if (paramsMany != -1) {
+        var paramsArr = params.split("&");
+        paramsArr.forEach(function (item, index) {
+          paramsObj[item.split("=")[0]] = item.split("=")[1];
+        })
+      } else {
+        paramsObj[params.split("=")[0]] = params.split("=")[1];
+      }
+    }
+
+    if (paramsObj.hasOwnProperty(name)) {
+      return paramsObj[name];
+    } else {
+      return null;
+    }
+  },
   JUMP_TO: function (url) {
     //跳转到
     if (this.BROWSER.isclient) {
@@ -68,7 +91,8 @@ module.exports = {
     if (!key) return;
     document.addEventListener('WinJSBridgeReady', function () {
       window.WinJSBridge.call('cache', 'get', {key: key}, function (resp) {
-        return JSON.stringify(resp);
+
+
       });
     });
   },
@@ -207,6 +231,16 @@ module.exports = {
     });
 
   },
+
+  CONFIRM: function (title, msg, callback) {
+    document.addEventListener('WinJSBridgeReady', function () {
+      window.WinJSBridge.call('notification', 'confirm', {title: title, message: msg, buttons: ['取消', '确定']},
+        function (resp) {
+          if (callback) callback(resp);
+        });
+    });
+  },
+
   NETWORK_STATUS: function () {
     window.WinJSBridge.call('device', 'networkStatus', function (resp) {
       if (resp.response.status == 0) {
@@ -403,7 +437,6 @@ module.exports = {
     };
     window.WinJSBridge.call('share', 'shareImage', shareContent, function (resp) {
       var result = JSON.stringify(resp);
-      alert(result);
     });
   },
   LOADING: function (text) {
@@ -419,9 +452,11 @@ module.exports = {
   }
   ,
   ISLOGIN: function (fn) {
-    window.WinJSBridge.call('login', 'isLogin', function (resp) {
-      fn(resp);
-    });
+    document.addEventListener('WinJSBridgeReady', function () {
+      window.WinJSBridge.call('login', 'isLogin', function (resp) {
+        fn(resp);
+      });
+    })
 
   },
   DEVICE: function (callback) {

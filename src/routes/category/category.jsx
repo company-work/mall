@@ -6,6 +6,7 @@ import Layout from 'components/layerUI/Layout';
 import Axios from 'axios';
 import Swiper from 'react-id-swiper';
 import Test from '../../test/mockTest.js';
+import InterFace from 'public/libs/interFace.js';
 
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
@@ -70,14 +71,13 @@ class Index extends React.Component {
     }else{
       return null
     }
-
   }
   /*--页面初始化--*/
   componentDidMount() {
     var self = this;
     //获取类目
     Test.initCategoryList();
-    Axios.get('/activity/goods/categoryAll.do')
+    Axios.get(InterFace.initCategoryUrl)
       .then(function (res) {
         if (res.data.stat=='ok') {
           var data = res.data;
@@ -152,7 +152,7 @@ class Index extends React.Component {
     //如果是当前索引，不去请求数据
 
     //ajax更新数据
-    Axios.get('/activity/goods/goodsList.do')
+    Axios.get(InterFace.initCategoryGoodsUrl)
       .then(function (res) {
         if (res.data.stat=='ok') {
           var data = res.data;
