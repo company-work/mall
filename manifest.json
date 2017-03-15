@@ -168,7 +168,6 @@
     "../node_modules/style-loader/addStyles.js": 165,
     "../src/public/libs/swiper/swiper.min.css": 166,
     "../src/public/libs/APP.js": 167,
-    "../src/public/libs/interFace.js": 168,
-    "../src/public/libs/swiper/swiper.min.js": 169
+    "../src/public/libs/swiper/swiper.min.js": 168
   }
 }

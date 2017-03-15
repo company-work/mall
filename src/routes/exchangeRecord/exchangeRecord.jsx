@@ -24,49 +24,56 @@ class ExchangeRecord extends React.Component {
     super();
     this.state = {
       recordList: [],
-      pageNum: 0,
+      pageNum: 1,
       totalNum: 10,
-      next: true
+      next: false
     }
   }
 
   componentDidMount() {
     var self = this;
-    //self.updateData(1);
+    APP.SET_REFRESH();
+    self.updateData();
   }
 
-  updateData(pageIndex) {
+  updateData() {
     var self = this;
     Test.initPointRecord();
-    Axios.get(InterFace.initExchangeUrl)
+    Axios.get(InterFace.initExchangeUrl, {
+        params: {
+          pageNum: self.state.pageNum,
+          pageSize: 10
+        }
+      })
       .then(function (res) {
         if (res.data.stat == 'ok') {
           var data = res.data;
+          var list = self.state.recordList;
+          data.orderSummaryInfos.forEach((item, index)=> {
+            list.push(item);
+          });
+
           self.setState({
             next: data.next,
-            pageNum: data.pageNum,
+            pageNum: data.pageNum + 1,
             totalNum: data.totalPages,
-            recordList: data.orderSummaryInfos
+            recordList: list
           });
         } else {
           APP.TOAST("服务器网线被挖断了", 1);
         }
       })
       .catch(function (error) {
-        console.log(error);
+        APP.TOAST("服务器网线被挖断了", 1);
       });
   }
 
-  loadFunc() {
-    var self = this;
-    self.updateData();
-  }
 
   render() {
     let self = this, state = self.state;
 
     var recordHtm = [];
-    if (state.recordList.length > 0) {
+    if (state.recordList && state.recordList.length > 0) {
       state.recordList.map((item, index)=> {
         var gPrice = item.payRmb ? item.pointAmount + " + ￥" + item.payRmb : item.pointAmount;
         var discountHtm;
@@ -104,13 +111,19 @@ class ExchangeRecord extends React.Component {
       })
     }
 
+
+    var infiniteLoader = <div className="infinite-loader">
+      <div className="infinite-loader-inner">加载更多...</div>
+    </div>;
+
     return (
       <div className="exchange-warp">
         <InfiniteScroll
-          pageStart={self.state.pageNum}
-          loadMore={self.loadFunc.bind(self)}
+          initialLoad={true}
+          pageStart={1}
+          loadMore={self.updateData.bind(self)}
           hasMore={self.state.next}
-          loader={<div className="loader">Loading ...</div>}
+          loader={infiniteLoader}
           useWindow={false}>
 
           {recordHtm}

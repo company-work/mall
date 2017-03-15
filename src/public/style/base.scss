@@ -114,3 +114,19 @@ body {
   background: url("../imgs/icon-2-grey.jpg") 0 center no-repeat;
   background-size: 17px 18px;
 }
+
+.infinite-loader{
+  display: -webkit-box;
+  -webkit-box-align: start;
+  -webkit-box-pack: center;
+  height: 50px;
+  box-sizing: border-box;
+  padding-top: 10px;
+  .infinite-loader-inner{
+    background: url("../imgs/infinity.gif") 10px center no-repeat;
+    background-size: 40px 40px;
+    padding-left: 60px;
+    color: #999;
+    font-size: 20px;
+  }
+}

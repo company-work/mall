@@ -1,16 +1,16 @@
 'use strict';
-
+var host = "http://192.168.2.242:8090";
 module.exports = {
-  initIndexUrl:"/activity/banner/appBannerList.do",
-  initIndexCategoryUrl:"/activity/goods/categoryList.do",
-  initCategoryUrl:"/activity/goods/categoryAll.do",
-  initCategoryGoodsUrl:"/activity/goods/goodsList.do",
-  initGoodsDetailsUrl:"/activity/goods/goodsDetail.do",
-  initOrderResult:"/activity/order/getTradeResult.do",
-  initCheckBuyBefore:"/activity/order/preSku.do",
-  initBuyInfo:"/activity/goods/selectSku.do",
-  initOrderDetails:"/activity/order/orderDetail.do",
-  initMyPointUrl:"/activity/pointm/pntDetail.do",
-  initExchangeUrl:"/activity/order/list.do",
-  initLimitSaleUrl:"/activity/topic/specialTopic.do"
+  initIndexUrl: host + "/activity/banner/appBannerList.do?channel=APP_INDEX",
+  initIndexCategoryUrl: host + "/activity/goods/categoryList.do",
+  initCategoryUrl: host + "/activity/goods/categoryAll.do",
+  initCategoryGoodsUrl: host + "/activity/goods/goodsList.do",
+  initGoodsDetailsUrl: host + "/activity/goods/goodsDetail.do",
+  initOrderResult: host + "/activity/order/getTradeResult.do",
+  initCheckBuyBefore: host + "/activity/order/preSku.do",
+  initBuyInfo: host + "/activity/goods/selectSku.do",
+  initOrderDetails: host + "/activity/order/orderDetail.do",
+  initMyPointUrl: host + "/activity/pointm/pntDetail.do",
+  initExchangeUrl: host + "/activity/order/list.do",
+  initLimitSaleUrl: host + "/activity/topic/specialTopic.do"
 };

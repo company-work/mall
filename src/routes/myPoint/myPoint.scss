@@ -39,10 +39,16 @@
       }
     }
   }
+  h3{
+    font-size: 22px;
+    font-weight: normal;
+    color: #999;
+    padding: 10px 30px 5px;
+  }
   .point-body{
     position: absolute;
     left: 0;
-    top: 278px;
+    top: 328px;
     right: 0;
     bottom: 0;
     overflow: hidden;
@@ -50,12 +56,7 @@
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
 
-    h3{
-      font-size: 22px;
-      font-weight: normal;
-      color: #999;
-      padding: 10px 30px 5px;
-    }
+
 
     .p-item{
       height: 118px;

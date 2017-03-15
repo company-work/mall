@@ -32,28 +32,7 @@ class Index extends React.Component {
       isLogin: false,
       myPoint: "10000",
       sysTime: "",
-      bannerList: [
-        {
-          imgUrc: "", //图片地址
-          linkUrl: "",//跳转地址
-          desc: ""    //描述文字
-        },
-        {
-          imgUrc: "", //图片地址
-          linkUrl: "",//跳转地址
-          desc: ""    //描述文字
-        },
-        {
-          imgUrc: "", //图片地址
-          linkUrl: "",//跳转地址
-          desc: ""    //描述文字
-        },
-        {
-          imgUrc: "", //图片地址
-          linkUrl: "",//跳转地址
-          desc: ""    //描述文字
-        }
-      ],
+      bannerList: [],
       flashSale: [],
       bannerBox: [],
       recommend: [],
@@ -74,7 +53,6 @@ class Index extends React.Component {
     //APP.TOAST("12",1);
 
     //var cacheData = APP.GET_CACHE('indexBannerData');
-
 
     /*
 
@@ -100,20 +78,22 @@ class Index extends React.Component {
     APP.LOADING("加载中...");
     Axios.get(InterFace.initIndexUrl)
       .then(function (res) {
+
+        console.log(res)
         if (res.data.succ) {
           APP.CLOSE_LOADING();
 
 
           var data = res.data.banners;
           var bannerBoxArr = [];
-          if (data.a0003.length) {
+          if (data.a0003 && data.a0003.length > 0) {
             bannerBoxArr.push(data.a0003[0]);
           }
-          if (data.a0004.length) {
+          if (data.a0004 && data.a0004.length > 0) {
             bannerBoxArr.push(data.a0004[0]);
           }
 
-          APP.SAVE_CACHE('indexBannerData', JSON.stringify(data));
+          //APP.SAVE_CACHE('indexBannerData', JSON.stringify(data));
 
 
           self.setState({
@@ -122,6 +102,7 @@ class Index extends React.Component {
             bannerBox: bannerBoxArr,
             recommend: data.a0005
           })
+
 
         } else {
           APP.TOAST("服务器网线被挖断了", 1);
@@ -258,9 +239,8 @@ class Index extends React.Component {
       stateData = self.state,
       bannerHtm, flashHtm, bannerBoxHtm, recommendHtm, categoryHtm;
 
-
     /*--首页banner内容--*/
-    if (stateData.bannerList.length > 0) {
+    if (stateData.bannerList && stateData.bannerList.length > 0) {
 
       /*--banner滚动配置参数--*/
       const params = {
@@ -290,7 +270,7 @@ class Index extends React.Component {
     }
 
     /*--限时快抢--*/
-    if (stateData.flashSale.length > 0) {
+    if (stateData.flashSale && stateData.flashSale.length > 0) {
       var
         flashSaleData = self.state.flashSale[0],
         flashDataObj = flashSaleData.quickBuyInfo,
@@ -329,7 +309,7 @@ class Index extends React.Component {
 
 
     /*--BannerBox--*/
-    if (stateData.bannerBox.length > 0) {
+    if (stateData.bannerBox && stateData.bannerBox.length > 0) {
 
       var bannerItemHtm = self.state.bannerBox.map((item, index)=> {
         let linkUrl = item.targetUrl;
@@ -345,7 +325,7 @@ class Index extends React.Component {
     }
 
     /*--推荐模块recommend--*/
-    if (stateData.recommend.length > 0) {
+    if (stateData.recommend && stateData.recommend.length > 0) {
       var recommendData = self.state.recommend[0];
       var rItemHtm = recommendData.hotSaleInfo.goodsList.map((item, index)=> {
 
@@ -394,7 +374,7 @@ class Index extends React.Component {
       </div>;
 
       recommendHtm = <div className="recommend">
-        <div className="r-title">{recommendData.title}</div>
+        <div className="r-title">{recommendData.hotSaleInfo.bannerTitle}</div>
         <div className="r-body g-swiper-list">
           <div className="r-body-inner">
             <Swiper {...reParams}>
@@ -407,7 +387,7 @@ class Index extends React.Component {
     }
 
     /*--类别模块--*/
-    if (stateData.category.length > 0) {
+    if (stateData.category && stateData.category.length > 0) {
 
       categoryHtm = stateData.category.map((item, index)=> {
 
@@ -471,12 +451,18 @@ class Index extends React.Component {
           </div>
         }
 
+        var cTitleHtms;
+
+        if (item.picBig != null) {
+          cTitleHtms = <div onClick={self.JumpCategory.bind(self,item.categoryNo)} className="c-title">
+            <img src={item.picBig}/>
+          </div>
+        }
+
 
         return (
           <div className="categoryBox" key={index}>
-            <div onClick={self.JumpCategory.bind(self,item.categoryNo)} className="c-title">
-              <img src={item.picBig}/>
-            </div>
+            {cTitleHtms}
             {GoodsBoxHtm}
           </div>
         )
