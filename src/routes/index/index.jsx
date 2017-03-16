@@ -78,12 +78,8 @@ class Index extends React.Component {
     APP.LOADING("加载中...");
     Axios.get(InterFace.initIndexUrl)
       .then(function (res) {
-
-        console.log(res)
+        APP.CLOSE_LOADING();
         if (res.data.succ) {
-          APP.CLOSE_LOADING();
-
-
           var data = res.data.banners;
           var bannerBoxArr = [];
           if (data.a0003 && data.a0003.length > 0) {
@@ -104,7 +100,8 @@ class Index extends React.Component {
           })
 
 
-        } else {
+        }
+        else {
           APP.TOAST("服务器网线被挖断了", 1);
         }
       })
@@ -132,6 +129,7 @@ class Index extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+        APP.TOAST("服务器网线被挖断了", 1);
       });
   }
 
@@ -177,7 +175,7 @@ class Index extends React.Component {
 
   /*跳转到商品详情页面*/
   JumpGoodsDetails(id) {
-    APP.JUMP_TO("goodsDetails.html?goods=" + id);
+    APP.JUMP_TO("goodsDetails.html?goodsId=" + id);
   }
 
   /*---页面跳转---*/
@@ -275,36 +273,39 @@ class Index extends React.Component {
         flashSaleData = self.state.flashSale[0],
         flashDataObj = flashSaleData.quickBuyInfo,
         gPriceHtm, gPrice, gSale;
-      //判断是组合支付中的价格是否存在
-      gPrice = flashDataObj.unionPoint && flashDataObj.unionRmb ? flashDataObj.unionPoint + " + ￥" + flashDataObj.unionRmb : flashDataObj.pricePointDiscount;
-      gSale = flashDataObj.unionPointRegular && flashDataObj.unionRmbRegular ? flashDataObj.unionPointRegular + " + ￥" + flashDataObj.unionRmbRegular : flashDataObj.pricePointRegular;
+
+      if (flashDataObj) {
+        //判断是组合支付中的价格是否存在
+        gPrice = flashDataObj.unionPoint && flashDataObj.unionRmb ? flashDataObj.unionPoint + " + ￥" + flashDataObj.unionRmb : flashDataObj.pricePointDiscount;
+        gSale = flashDataObj.unionPointRegular && flashDataObj.unionRmbRegular ? flashDataObj.unionPointRegular + " + ￥" + flashDataObj.unionRmbRegular : flashDataObj.pricePointRegular;
 
 
-      if (flashDataObj.unionPointRegular != null || flashDataObj.unionRmbRegular != null && gSale != null) {
-        gPriceHtm = <del className="g-price">{gSale}</del>
+        if (flashDataObj.unionPointRegular != null || flashDataObj.unionRmbRegular != null && gSale != null) {
+          gPriceHtm = <del className="g-price">{gSale}</del>
+        }
+
+        //console.log();
+
+        self.countDown(flashDataObj.countTime / 1000);
+
+
+        flashHtm = <Layout onClick={self.JumpLimitSale.bind(self)} orient="column" className="flashSale">
+          <Layout className="flashSale-title" orient="row" align="center">
+            {flashSaleData.title} {flashDataObj.timesTitle}
+            <span id="cDownTime">00:00:00</span>
+          </Layout>
+          <Layout className="flashSale-body" orient="row">
+            <Layout pack="center" align="center" className="f-img">
+              <img src={flashSaleData.quickBuyInfo.picIcon}/>
+            </Layout>
+            <Layout orient="column" className="f-intro goods-intro" flex>
+              <p className="g-name">{flashSaleData.quickBuyInfo.goodsTitle}</p>
+              <p className="g-sale">{gPrice}</p>
+              {gPriceHtm}
+            </Layout>
+          </Layout>
+        </Layout>;
       }
-
-      //console.log();
-
-      self.countDown(flashDataObj.countTime / 1000);
-
-
-      flashHtm = <Layout onClick={self.JumpLimitSale.bind(self)} orient="column" className="flashSale">
-        <Layout className="flashSale-title" orient="row" align="center">
-          {flashSaleData.title} {flashDataObj.timesTitle}
-          <span id="cDownTime">00:00:00</span>
-        </Layout>
-        <Layout className="flashSale-body" orient="row">
-          <Layout pack="center" align="center" className="f-img">
-            <img src={flashSaleData.quickBuyInfo.picIcon}/>
-          </Layout>
-          <Layout orient="column" className="f-intro goods-intro" flex>
-            <p className="g-name">{flashSaleData.quickBuyInfo.goodsTitle}</p>
-            <p className="g-sale">{gPrice}</p>
-            {gPriceHtm}
-          </Layout>
-        </Layout>
-      </Layout>;
     }
 
 
@@ -324,8 +325,10 @@ class Index extends React.Component {
       bannerBoxHtm = <Layout className="bannerBox" orient="row" align="center" pack="center">{bannerItemHtm}</Layout>;
     }
 
+    console.log(stateData.recommend);
+
     /*--推荐模块recommend--*/
-    if (stateData.recommend && stateData.recommend.length > 0) {
+    if (stateData.recommend && stateData.recommend[0] != null && stateData.recommend.length > 0) {
       var recommendData = self.state.recommend[0];
       var rItemHtm = recommendData.hotSaleInfo.goodsList.map((item, index)=> {
 

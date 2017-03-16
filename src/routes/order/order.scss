@@ -17,6 +17,50 @@
       }
     }
   }
+  .o-address-active {
+    height: 150px;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 0 30px;
+    .o-address-top {
+      height: 50px;
+      line-height: 50px;
+      padding-top: 20px;
+      .o-a-left {
+
+        & > div {
+          display: block;
+          width: 100%;
+        }
+      }
+      .o-a-right {
+        width: 135px;
+      }
+    }
+    .o-address-bot {
+      .o-m {
+        padding: 0 10px;
+        background: #ff4200;
+        border-radius: 3px;
+        font-size: 14px;
+        text-align: center;
+        margin-right: 20px;
+        color: #fff;
+        height: 25px;
+        line-height: 25px;
+      }
+      .o-a-left {
+
+      }
+      .o-a-right {
+        width: 135px;
+        i {
+
+          font-size: 28px;
+        }
+      }
+    }
+  }
   .o-content {
     .o-goods {
       height: 238px;

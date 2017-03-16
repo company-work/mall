@@ -63,6 +63,7 @@
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.5.0",
     "normalize.css": "^4.0.0",
+    "qs": "^6.4.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-id-swiper": "^1.3.1",

@@ -12,5 +12,11 @@ module.exports = {
   initOrderDetails: host + "/activity/order/orderDetail.do",
   initMyPointUrl: host + "/activity/pointm/pntDetail.do",
   initExchangeUrl: host + "/activity/order/list.do",
-  initLimitSaleUrl: host + "/activity/topic/specialTopic.do"
+  initLimitSaleUrl: host + "/activity/topic/specialTopic.do",
+  checkAuth:host + "/activity/order/preTrade.do",
+  checkGoodsUrl:host + "/activity/order/prexchange.do",
+  getSkuUrl:host + "/activity/goods/selectSku.do",
+  checkOrderUrl:host+"/activity/order/preSku.do",
+  getOrderUrl:host+"/activity/order/orderDetail.do",
+  subOrderUrl:host+"/activity/order/orderSubmit.do"
 };

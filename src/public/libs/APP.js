@@ -96,6 +96,21 @@ module.exports = {
       });
     });
   },
+  CHECKTAUTH: function (fn, action) {
+    if (!action) action = "DEPOSIT";
+    document.addEventListener('WinJSBridgeReady', function () {
+      window.WinJSBridge.call('register', 'registerDispatch', {action: action}, function (resp) {
+        //0为注册流程结束
+
+        if (fn) {
+          fn(resp)
+        }
+        /*
+
+         */
+      });
+    });
+  },
   JUMP: function (url) {
     this.JUMP_TO(url);
   },
