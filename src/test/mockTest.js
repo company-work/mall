@@ -5,7 +5,7 @@ import InterFace from '../public/libs/interFace.js';
 var Test = {
   initIndex(){
     console.log("----积分商城首页测试数据----");
-    Mock.mock('/activity/banner/appBannerList.do', {
+    Mock.mock('/activity/banner/appBannerList.do?channel=APP_INDEX', {
       // a0001:积分商城新版顶部;(banner)
       // a0002:首页栏位下部;(限时快抢）
       // a0003:首页左侧大栏位;（chainbox第一个）

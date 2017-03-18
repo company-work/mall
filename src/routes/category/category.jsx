@@ -131,7 +131,7 @@ class Category extends React.Component {
     }
 
     if (self.cTitleSwiper) {
-      self.cTitleSwiper.slideTo(index, 0, false);
+      self.cTitleSwiper.slideTo(index, 1000, false);
     }
 
     //如果当前是
@@ -263,7 +263,7 @@ class Category extends React.Component {
 
     /*---商品内容这块的HTML---*/
     const paramsTitle = {
-      width: (document.documentElement.clientWidth - 80) / 4,
+      /*width: (document.documentElement.clientWidth - 80) / 4,*/
       onInit: (swiper) => {
         self.cTitleSwiper = swiper;
       },
@@ -276,7 +276,7 @@ class Category extends React.Component {
 
          self.swiperTabs(cid, activeIndex);*/
       },
-      /*slidesPerView: 4,*/
+      slidesPerView: 4,
       centeredSlides: true,
       freeMode: true,
       observer: true,//修改swiper自己或子元素时，自动初始化swiper

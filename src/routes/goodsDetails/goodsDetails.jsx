@@ -262,7 +262,7 @@ class GoodsDetails extends React.Component {
             obj.point = normsData.pricePoint;
             obj.money = normsData.unionPoint ? (normsData.unionPoint + " + ￥" + normsData.unionRmb) : "";
             obj.stock = normsData.inventory;
-            obj.selected = "未选择";
+            obj.selected = "";
           }
 
           self.state.normsInfo = obj;
@@ -301,29 +301,38 @@ class GoodsDetails extends React.Component {
     if (!self.state.dialogFlag) {
       self.checkAuth();
     } else {
+      var gId = self.getLocationParams("goodsId");
       var data = self.state;
-      console.log(data);
       var _n = data.selectNum;
       var _p = data.selectPay;
       var _keyNum = "";
       for (var k in data.selectKey) {
         _keyNum += data.selectKey[k];
       }
-      var _gId = data.normsDatabase[_keyNum].goodsId;
-      var _skuId = data.normsDatabase[_keyNum].id;
+
+      var params = {
+        goodsId: gId,
+        quantity: _n,
+        tradePayType: _p
+      };
+
+      var _skuId;
+      if (data.normsDatabase[_keyNum]) {
+        params.skuId = data.normsDatabase[_keyNum].id;
+      }
 
       var qs = require('qs');
       Axios.get(InterFace.checkOrderUrl, {
-          params: {
-            goodsId: _gId,
-            skuId: _skuId,
-            quantity: _n,
-            tradePayType: _p
-          }
+          params: params
         })
         .then(function (res) {
           if (res.data.stat == "ok") {
-            APP.JUMP_TO("order.html?g=" + _gId + "&s=" + _skuId + "&q=" + _n + "&p=" + _p);
+            if (data.normsDatabase[_keyNum]) {
+              APP.JUMP_TO("order.html?g=" + gId + "&s=" + _skuId + "&q=" + _n + "&p=" + _p);
+            } else {
+              APP.JUMP_TO("order.html?g=" + gId + "&q=" + _n + "&p=" + _p);
+            }
+
           }
         })
         .catch(function (error) {
@@ -446,12 +455,12 @@ class GoodsDetails extends React.Component {
       var priceHtm;
       switch (payType) {
         case "POINT":
-          priceHtm = <div className="g-sale">
+          priceHtm = <div className="g-sale icon-point">
             {state.normsInfo.point}
           </div>;
           break;
         case "UNION":
-          priceHtm = <div className="g-sale">
+          priceHtm = <div className="g-sale icon-point">
             {state.normsInfo.money}
           </div>;
           break;

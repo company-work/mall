@@ -1,5 +1,6 @@
 'use strict';
-var host = "http://192.168.2.242:8090";
+//var host = "http://192.168.2.242:8090";
+var host = "";
 module.exports = {
   initIndexUrl: host + "/activity/banner/appBannerList.do?channel=APP_INDEX",
   initIndexCategoryUrl: host + "/activity/goods/categoryList.do",
@@ -13,10 +14,12 @@ module.exports = {
   initMyPointUrl: host + "/activity/pointm/pntDetail.do",
   initExchangeUrl: host + "/activity/order/list.do",
   initLimitSaleUrl: host + "/activity/topic/specialTopic.do",
-  checkAuth:host + "/activity/order/preTrade.do",
-  checkGoodsUrl:host + "/activity/order/prexchange.do",
-  getSkuUrl:host + "/activity/goods/selectSku.do",
-  checkOrderUrl:host+"/activity/order/preSku.do",
-  getOrderUrl:host+"/activity/order/orderDetail.do",
-  subOrderUrl:host+"/activity/order/orderSubmit.do"
+  checkAuth: host + "/activity/order/preTrade.do",
+  checkGoodsUrl: host + "/activity/order/prexchange.do",
+  getSkuUrl: host + "/activity/goods/selectSku.do",
+  checkOrderUrl: host + "/activity/order/preSku.do",
+  getOrderUrl: host + "/activity/order/orderDetail.do",
+  subOrderUrl: host + "/activity/order/orderSubmit.do",
+  getOrderStateUrl: host + "/activity/order/getTradeResult.do",
+  putOrderUrl: host + "/activity/order/orderSubmit.do"
 };

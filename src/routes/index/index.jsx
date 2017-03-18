@@ -54,22 +54,22 @@ class Index extends React.Component {
 
     //var cacheData = APP.GET_CACHE('indexBannerData');
 
-    /*
+/*
 
-     APP.CONFIRM("温馨提示", "提示的内容", function (data) {
-     var res = data.response,
-     btnIndex = res.buttonIndex;
-     switch (btnIndex) {
-     case 0:
-     alert("您取消了");
-     break;
-     case 1:
-     alert("您确定了");
-     break;
-     }
-     });
+    APP.CONFIRM("温馨提示", "提示的内容", function (data) {
+      var res = data.response,
+        btnIndex = res.buttonIndex;
+      switch (btnIndex) {
+        case 0:
+          alert("您取消了");
+          break;
+        case 1:
+          alert("您确定了");
+          break;
+      }
+    });
+*/
 
-     */
 
     APP.SET_REFRESH();
 

@@ -39,6 +39,11 @@ let map = {
     src: "exchangeRecord",
     tpl: "exchangeRecord.html",
     version: "1.0.0"
+  },
+  'quickPay': {
+    src: "quickPay",
+    tpl: "quickPay.html",
+    version: "1.0.0"
   }
 };
 

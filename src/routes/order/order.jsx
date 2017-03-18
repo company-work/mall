@@ -6,6 +6,7 @@ import Layout from 'components/layerUI/Layout';
 import InterFace from 'public/libs/interFace.js';
 import Axios from 'axios';
 import Test from '../../test/mockTest.js';
+import $ from 'zepto';
 
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
@@ -13,7 +14,7 @@ import './order.scss';
 let domRoot = new Dom("page-order");
 
 
-import APP from 'public/libs/APP';
+window.APP = require('../../public/libs/APP');
 
 //每个页面都作为一个组件
 class Order extends React.Component {
@@ -22,7 +23,8 @@ class Order extends React.Component {
     this.state = {
       keyboardFlag: false,
       address: {},
-      telNum:"",
+      telNum: "",
+      iframeSecretUrl: "http://192.168.2.246:9100/index.html",
       goodsInfo: {}
     }
   }
@@ -59,13 +61,35 @@ class Order extends React.Component {
     var _s = self.getLocationParams("s");
     var _q = self.getLocationParams("q");
     var _p = self.getLocationParams("p");
+    var obj = {};
+    obj.goodsId = _g;
+    if (_s != null) {
+      obj.skuId = _s;
+    }
+    obj.quantity = _q;
+    obj.tradePayType = _p;
+
+
+    $.ajax({
+      url:"http://192.168.2.246:9001/assets/index.html",
+      type:"get",
+      dataType:"html",
+      success:function(result){
+        var dataHtm = result;
+
+        window.frames["iFrame"].document.write(dataHtm);
+      },
+      error:function(msg){
+        console.log(msg);
+      }
+    });
+
+
+    APP.SET_REFRESH();
+    return false;
+    /**/
     Axios.get(InterFace.getOrderUrl, {
-        params: {
-          goodsId: _g,
-          skuId: _s,
-          quantity: _q,
-          tradePayType: "UNION"
-        }
+        params: obj
       })
       .then(function (res) {
         if (res.data.stat == "ok") {
@@ -110,36 +134,127 @@ class Order extends React.Component {
   }
 
 
-  submitOrder(){
+  isTel(num) {
+    let s = num;
+    if (s != null) {
+      var r, re;
+      re = /^[1][2-9]\d{9}$/g;
+      r = re.test(s);
+      return r;
+    }
+    return false;
+  }
+
+  submitOrder() {
     var self = this;
     var state = self.state;
-    if(state.address==null){
-      APP.TOAST("请完善收货地址",1);
-      return false;
+
+    //直接弹框
+    if (state.goodsInfo.type == "CHONGZHI") {
+
+
+      if (!state.telNum) {
+        APP.TOAST("手机号不能能为空", 2);
+        return false;
+      }
+
+      if (!self.isTel(state.telNum)) {
+        APP.TOAST("手机号码格式不正确", 2);
+        return false;
+      }
+
+      if (APP.BROWSER.isclient) {
+
+        var alertTxt = "充值号码为" + state.telNum;
+        APP.CONFIRM("温馨提示", alertTxt, function (data) {
+
+          var
+            res = data.response,
+            btnIndex = res.buttonIndex;
+          if (btnIndex == 1) {
+            //确定手机号码没有问题就过去
+            self.submitOrderReal();
+          }
+        })
+      }
+      else {
+        //确定手机号码没有问题就过去
+        self.submitOrderReal();
+      }
     }
-    Axios.get(InterFace.getOrderUrl, {
-        params: {
-          tradeOrderNO: state.goodsInfo.tradeOrderNO,
-          userName: state.address.name,
-          detailAddress: state.address.address,
-          phoneNumber: state.address.tel,
-          extraParam: state.telNum,
-          orderId: state.goodsInfo.orderId,
-          pricePoint: state.goodsInfo.pricePoint,
-          unionRmb: state.goodsInfo.priceRMB,
-        }
+    else if (state.goodsInfo.type == "ENTRY") {
+      //判断地址
+      if (state.address == null) {
+        APP.TOAST("请完善收货地址", 1);
+        return false;
+      }
+    }
+
+  }
+
+  submitOrderReal() {
+    var self = this,
+      state = self.state;
+    console.log(self.state);
+    var obj = {};
+    if (state.address != null) {
+      obj.userName = state.address.name;
+      obj.detailAddress = state.address.address;
+      obj.phoneNumber = state.address.tel;
+    } else {
+      obj.userName = "";
+      obj.detailAddress = "";
+      obj.phoneNumber = "";
+    }
+
+    obj.userId = "8201506170006346";//测试的时候写死
+    obj.tradeOrderNO = state.goodsInfo.tradeOrderNO;
+    obj.extraParam = state.telNum;
+
+    obj.orderId = state.goodsInfo.orderId;
+    obj.pricePoint = state.goodsInfo.pricePoint;
+    obj.unionRmb = state.goodsInfo.priceRMB;
+
+    Axios.get(InterFace.putOrderUrl, {
+        params: obj
       })
       .then(function (res) {
-        if (res.data.stat == "ok") {
-            //这里判断是否需要把iframe展示出来
-        } else {
-          APP.TOAST(res.data.msg, 1);
+        var data = res.data;
+        if (!res.data.succ) {
+          if (data.grantUrl) {
+            self.state.iframeSecretUrl = data.grantUrl;
+          }
+          self.state.keyboardFlag = true;
+          self.setState(self.state);
         }
       })
       .catch(function (error) {
         APP.TOAST(error, 1);
       });
 
+  }
+
+  //更新手机号码
+  setTelNum(e) {
+    var self = this,
+      val = e.target.value;
+
+    if (val.length > 11) {
+      return false;
+    }
+    self.setState({
+      telNum: val
+    })
+  }
+
+  //关闭密码iframe弹框
+  closeKeyBoard() {
+    var self = this;
+    if (self.state.keyboardFlag) {
+      self.setState({
+        keyboardFlag: false
+      })
+    }
   }
 
 
@@ -151,43 +266,9 @@ class Order extends React.Component {
 
     //支付密码的键盘
     if (state.keyboardFlag) {
-      keyboardHtm = <div className="o-password">
-        <div className="o-p-mask"></div>
-        <div className="o-p-body">
-          <div className="o-title">请输入支付密码<i className="iconfont icon-close"></i></div>
-          <div className="o-info">
-            <div>金额</div>
-            <div className="o-price">￥160 + 10000</div>
-            <Layout className="o-secret">
-              <Layout flex align="center" className="active" pack="center"></Layout>
-              <Layout flex align="center" pack="center"></Layout>
-              <Layout flex align="center" pack="center"></Layout>
-              <Layout flex align="center" pack="center"></Layout>
-              <Layout flex align="center" pack="center"></Layout>
-              <Layout flex align="center" pack="center"></Layout>
-            </Layout>
-            <Layout pack="center" align="center" className="o-tips">
-              <Layout className="o-tips-inner">盈盈理财安全键盘</Layout>
-            </Layout>
-          </div>
-          <div className="o-keyboard">
-            <div className="o-keyboard-inner">
-              <div className="k-num">1</div>
-              <div className="k-num">2</div>
-              <div className="k-num">3</div>
-              <div className="k-num">4</div>
-              <div className="k-num">5</div>
-              <div className="k-num">6</div>
-              <div className="k-num">7</div>
-              <div className="k-num">8</div>
-              <div className="k-num">9</div>
-              <div className="k-num k-num-last k-num-grey"></div>
-              <div className="k-num k-num-last">0</div>
-              <div className="k-num k-num-last k-num-grey">
-                <img src={require('../../public/imgs/icon-close.jpg')}/>
-              </div>
-            </div>
-          </div>
+      keyboardHtm = <div onClick={self.closeKeyBoard.bind(self)} className="keyboardBox">
+        <div className="keyboardBox-inner">
+          <iframe width="100%" height="100%" id="iFrame" name="iFrame"></iframe>
         </div>
       </div>
     }
@@ -203,7 +284,8 @@ class Order extends React.Component {
             <Layout className="o-a-left" flex align="center">登录完善详细收货地址</Layout>
             <Layout className="o-a-right" align="center"><i className="iconfont icon-right"></i></Layout>
           </Layout>
-        } else {
+        }
+        else {
 
           var flag = state.address.dFlag, dHtm;
           if (flag) {
@@ -241,9 +323,10 @@ class Order extends React.Component {
         telHtm = <Layout align="center" className="o-nums o-tels">
           <Layout className="o-nums-left">充值手机号：</Layout>
           <Layout className="o-nums-right" flex>
-            <input placeholder="请输入您的手机号码" type="tel"/>
+            <input onChange={self.setTelNum.bind(self)} placeholder="请输入您的手机号码" value={self.state.telNum} type="number"
+                   pattern="[0-9]*"/>
           </Layout>
-        </Layout>
+        </Layout>;
 
         break;
 
@@ -260,9 +343,9 @@ class Order extends React.Component {
     }
     else {
       priceHtm = <div className="g-price">{goodsInfo.pricePoint} + ￥{goodsInfo.priceRMB}</div>
-      pribotHtm = <span>￥{goodsInfo.priceRMB}</span>;
+      pribotHtm = <span>+ ￥{goodsInfo.priceRMB}</span>;
       console.log(goodsInfo);
-      if (goodsInfo.payToolsList && goodsInfo.payToolsList.length > 0) {
+      if (goodsInfo.payToolsList && goodsInfo.payToolsList != null && goodsInfo.payToolsList.length > 0) {
         goodsInfo.payToolsList.forEach((item, index)=> {
           if (item.fundBillType == "CARD") {
             detailsPriceHtm = <Layout className="p-item">
@@ -276,14 +359,16 @@ class Order extends React.Component {
 
     var _q = self.getLocationParams("q");
 
+    var clsName = state.keyboardFlag ? "order-warp keyboard-show" : "order-warp";
+
     return (
-      <div className="order-warp">
+      <div className={clsName}>
 
         {/*收获地址*/}
         {addressHtm}
 
 
-        <div className="o-content mt20">
+        <div className="o-content">
           {/*商品基本信息*/}
           <Layout className="o-goods">
             <Layout pack="center" align="center" className="o-g-img">
@@ -330,13 +415,15 @@ class Order extends React.Component {
             <div className="submit-info-inner">
               <p>商品总额</p>
               <p className="s-info-price">
-                <span>{goodsInfo.pricePoint} +</span>{pribotHtm}
+                <span>{goodsInfo.pricePoint}</span>{pribotHtm}
               </p>
             </div>
 
           </Layout>
-          <Layout pack="center" onClick={self.submitOrder.bind(self)} align="center" className="o-submit-btn">提交订单</Layout>
+          <Layout pack="center" onClick={self.submitOrder.bind(self)} align="center"
+                  className="o-submit-btn">提交订单</Layout>
         </Layout>
+
 
         {/*密码框*/}
         {keyboardHtm}
@@ -344,7 +431,6 @@ class Order extends React.Component {
       </div>
     );
   }
-
 
 
 }

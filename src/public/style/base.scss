@@ -86,13 +86,19 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: #e13602;
-} /* 滚动条的滑轨背景颜色 */
+}
+
+/* 滚动条的滑轨背景颜色 */
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
-} /* 滑块颜色 */
+}
+
+/* 滑块颜色 */
 ::-webkit-scrollbar-button {
   background-color: #e13602;
-} /* 滑轨两头的监听按钮颜色 */
+}
+
+/* 滑轨两头的监听按钮颜色 */
 ::-webkit-scrollbar-corner {
   background-color: #e13602;
 }
@@ -111,22 +117,30 @@ body {
 }
 
 .icon-point-grey {
-  background: url("../imgs/icon-2-grey.jpg") 0 center no-repeat;
+  background: url("../imgs/icon-2-grey.jpg") 0 4px no-repeat;
   background-size: 17px 18px;
+  padding-left: 25px;
 }
 
-.infinite-loader{
+.infinite-loader {
   display: -webkit-box;
   -webkit-box-align: start;
   -webkit-box-pack: center;
   height: 50px;
   box-sizing: border-box;
   padding-top: 10px;
-  .infinite-loader-inner{
+  .infinite-loader-inner {
     background: url("../imgs/infinity.gif") 10px center no-repeat;
     background-size: 40px 40px;
     padding-left: 60px;
     color: #999;
     font-size: 20px;
   }
+}
+
+.default-null {
+  width: 294px;
+  height: 254px;
+  background: url("../imgs/icon-null.png") center no-repeat;
+  background-size: 294px 254px;
 }

@@ -1,0 +1,72 @@
+.page-quickPay {
+  box-sizing: border-box;
+  padding: 20px 0;
+  .pay-info {
+    height: 180px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #999;
+    .pay-info-t {
+      color: #202020;
+    }
+  }
+  .layout-input {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 30px;
+    height: 84px;
+    .l-i-t {
+      margin-right: 10px;
+    }
+    input {
+      display: block;
+      height: 60px;
+      width: 100%;
+      font-size: 24px;
+      padding-left: 10px;
+    }
+  }
+  .pay-tel {
+    position: relative;
+    .l-i-i {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 35px;
+      height: 35px;
+      background: url("../../public/imgs/icon-wen.jpg") 0 center no-repeat;
+      background-size: 31px 30px;
+    }
+  }
+  .pay-tel-tips {
+    height: 90px;
+    padding-left: 30px;
+    color: #999;
+  }
+  .pay-code {
+    margin-bottom: 40px;
+    .pay-code-btn {
+      width: 180px;
+      background: #d73400;
+      color: #fff;
+      font-size: 22px;
+      &.disabled{
+        background: #d9d9d9;
+      }
+    }
+  }
+  .pay-btn {
+    margin: 0 30px;
+    height: 85px;
+    color: #fff;
+    background: #d73400;
+
+    &.disabled {
+      background: #d1d1d1;
+    }
+  }
+}
