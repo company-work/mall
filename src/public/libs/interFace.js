@@ -1,6 +1,6 @@
 'use strict';
-//var host = "http://192.168.2.242:8090";
-var host = "";
+var host = "http://192.168.2.242:8090";
+//var host = "";
 module.exports = {
   initIndexUrl: host + "/activity/banner/appBannerList.do?channel=APP_INDEX",
   initIndexCategoryUrl: host + "/activity/goods/categoryList.do",

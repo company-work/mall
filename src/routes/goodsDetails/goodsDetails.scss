@@ -1,10 +1,10 @@
 .page-goodsDetails {
-  .g-show-dialog{
+  .g-show-dialog {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    right:0;
+    right: 0;
     overflow: hidden;
   }
   .g-title {
@@ -25,36 +25,106 @@
       .g-name {
         font-size: 28px;
         line-height: 30px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
-      .g-sale {
-        position: relative;
-        background: url("../../public/imgs/icon-2.jpg") 0 4px no-repeat;
-        background-size: 17px 18px;
-        padding-left: 30px;
-        color: #ff991c;
-        font-size: 24px;
-        span{
-          display: inline-block;
-          border-radius: 4px;
-          background:#ff9a1d url("../../public/imgs/icon-lock.jpg") 5px center no-repeat;
-          background-size: 19px 20px;
-          color: #fff;
-          width: 108px;
-          height: 25px;
-          line-height: 25px;
-          margin-left: 30px;
-          box-sizing: border-box;
-          padding-left: 30px;
-          font-size: 16px;
+
+      .g-price-default {
+        .g-price-box {
+          display: -webkit-box;
+          -webkit-box-orient: horizontal;
+          -webkit-box-align: center;
+          height: 35px;
+          color: #999;
+          .g-sale {
+            position: relative;
+            background: url("../../public/imgs/icon-2.jpg") 0 center no-repeat;
+            background-size: 17px 18px;
+            padding-left: 30px;
+            color: #ff991c;
+            font-size: 24px;
+            height: 30px;
+            line-height: 30px;
+
+            span {
+              display: inline-block;
+              border-radius: 4px;
+              background: #ff9a1d url("../../public/imgs/icon-lock.jpg") 5px center no-repeat;
+              background-size: 19px 20px;
+              color: #fff;
+              width: 108px;
+              height: 25px;
+              line-height: 25px;
+              margin-left: 30px;
+              box-sizing: border-box;
+              padding-left: 30px;
+              font-size: 16px;
+            }
+          }
         }
       }
-      .g-price {
-        background: url("../../public/imgs/icon-2-grey.jpg") 0 center no-repeat;
-        background-size: 17px 18px;
-        padding-left: 30px;
-        color: #999;
-        font-size: 22px;
+
+      .g-price-quick {
+        height: 96px;
+        background: #ff9a1e;
+        color: #fff;
+        box-sizing: border-box;
+        padding: 10px 30px;
+        margin: 0 -30px;
+        .g-price-box {
+          h3 {
+            font-size: 20px;
+            font-weight: normal;
+          }
+          .g-price {
+            font-size: 24px;
+            span, del {
+              background: url("../../public/imgs/icon-2-white.jpg") 0 center no-repeat;
+              background-size: 17px 19px;
+              padding-left: 25px;
+            }
+            .g-price-sale {
+              font-size: 30px;
+              margin-right: 10px;
+            }
+            .g-price-regular {
+              font-size: 20px;
+            }
+          }
+        }
+        .g-stock-box {
+          width: 150px;
+          font-size: 20px;
+          .g-stock {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            height: 26px;
+            border-radius: 15px;
+            background: #ffd7a4;
+            overflow: hidden;
+            .g-stock-txt {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              text-align: center;
+              transform: translate(-50%, -50%);
+              color: #fe9a1e;
+              z-index: 999;
+            }
+            .g-stock-inner {
+              position: absolute;
+              left: 0;
+              top: 0;
+              height: 100%;
+              background: #fff;
+              border-radius: 15px  0 0 15px;
+              width: 50%;
+              z-index: 800;
+            }
+          }
+        }
       }
     }
   }
@@ -76,7 +146,7 @@
       font-weight: normal;
       text-align: justify;
 
-      p{
+      p {
         margin-bottom: 10px;
         img {
           display: block;
@@ -90,7 +160,6 @@
       }
     }
   }
-
 
   .g-btn-submit {
     position: fixed;
@@ -106,15 +175,15 @@
     z-index: 9999;
   }
 
-  .g-buy{
+  .g-buy {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    right:0;
-    background: rgba(0,0,0,0.5);
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
-    .g-buy-inner{
+    .g-buy-inner {
       position: absolute;
       left: 0;
       bottom: 0;
@@ -122,12 +191,12 @@
       height: 870px;
       background: #fff;
     }
-    .g-info{
+    .g-info {
       position: relative;
       width: 100%;
       height: 222px;
       padding-left: 265px;
-      &:after{
+      &:after {
         position: absolute;
         left: 0;
         bottom: 0;
@@ -136,7 +205,7 @@
         background: #ebebeb;
         content: "";
       }
-      .g-info-img{
+      .g-info-img {
         position: absolute;
         left: 30px;
         top: -15px;
@@ -150,77 +219,77 @@
         display: -webkit-box;
         -webkit-box-align: center;
         -webkit-box-pack: center;
-        img{
+        img {
           display: block;
           width: 170px;
           height: 170px;
         }
       }
-      .g-info-intro{
+      .g-info-intro {
         padding-top: 30px;
-        .g-sale{
+        .g-sale {
           font-size: 28px;
           color: #ff991c;
         }
-        .g-price{
+        .g-price {
           color: #999;
           font-size: 24px;
           margin-bottom: 20px;
         }
-        .g-num{
+        .g-num {
           font-size: 28px;
           margin-bottom: 5px;
         }
-        .g-choose{
+        .g-choose {
           font-size: 18px;
         }
       }
-      .g-buy-close{
+      .g-buy-close {
         position: absolute;
         top: 25px;
-        right:30px;
+        right: 30px;
         width: 30px;
         height: 30px;
         cursor: pointer;
-        i{
+        i {
           font-size: 28px;
           color: #999;
         }
       }
     }
-    .buy-props{
+    .buy-props {
       width: 100%;
       overflow: auto;
       padding-bottom: 80px;
       box-sizing: border-box;
       -webkit-overflow-scrolling: touch;
-      .b-type{
+      .b-type {
         padding: 20px 30px;
         border-bottom: 1px solid #ebebeb;
-        &:last-child{
+        &:last-child {
           border: none;
         }
-        .b-t-title{
+        .b-t-title {
           height: 40px;
           line-height: 40px;
           margin-bottom: 20px;
         }
-        .b-t-body{
-          span{
+        .b-t-body {
+          span {
             display: inline-block;
             font-size: 22px;
             padding: 12px 30px;
             text-align: center;
             margin-right: 18px;
-            color:#4e4e4e;
+            color: #4e4e4e;
             border: 1px solid #4e4e4e;
             margin-bottom: 20px;
             border-radius: 8px;
-            &.active{
+            &.active {
               color: #dc3900;
               border-color: #dc3900;
             }
-            &.disabled{
+            &.disabled {
               color: #b7b7b7;
               border-color: #b7b7b7;
             }
@@ -228,19 +297,19 @@
         }
 
         /*--数量--*/
-        &.buy-num{
-          .b-t-title{
+        &.buy-num {
+          .b-t-title {
             margin-bottom: 0;
             width: 150px;
           }
-          .b-t-body{
-            .b-input{
+          .b-t-body {
+            .b-input {
               border: 1px solid #4e4e4e;
               height: 50px;
               width: 100px;
               margin: 0 5px;
               border-radius: 2px;
-              input{
+              input {
                 width: 100%;
                 height: 100%;
                 box-sizing: border-box;
@@ -248,7 +317,7 @@
                 font-size: 24px;
               }
             }
-            .b-reduce,.b-plus{
+            .b-reduce, .b-plus {
               width: 50px;
               height: 50px;
               text-align: center;

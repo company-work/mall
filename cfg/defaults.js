@@ -17,8 +17,8 @@ var isProduction = function () {
 };
 
 const devPublicPath = "/";
-//const proPublicPath = "http://ami-static.b0.upaiyun.com/Mall/1.0.2/";
-const proPublicPath = "http://192.168.2.246:9310/";
+//const proPublicPath = "http://ami-static.b0.upaiyun.com/point-mall/mall/common/";
+const proPublicPath = "http://192.168.2.246:9001/";
 //const proPublicPath = "./";
 
 function getDefaultModules() {

@@ -9,6 +9,7 @@ module.exports = {
       'react',
       'react-dom',
       './src/public/libs/APP.js',
+      './src/public/libs/interFace.js',
       './src/public/libs/swiper/swiper.min.js',
       './src/public/libs/swiper/swiper.min.css'
     ]
@@ -31,7 +32,7 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
-      { test: /\.(ttf)$/, loader: "url-loader?name=/[path][name].[ext]" },
+      {test: /\.(ttf)$/, loader: "url-loader?name=/[path][name].[ext]"},
       {
         test: /\.(png|jpeg|gif|jpg)$/,
         loader: ['url'],

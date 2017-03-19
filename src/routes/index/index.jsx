@@ -268,7 +268,7 @@ class Index extends React.Component {
     }
 
     /*--限时快抢--*/
-    if (stateData.flashSale && stateData.flashSale.length > 0) {
+    if (stateData.flashSale && stateData.flashSale[0] != null && stateData.flashSale.length > 0) {
       var
         flashSaleData = self.state.flashSale[0],
         flashDataObj = flashSaleData.quickBuyInfo,

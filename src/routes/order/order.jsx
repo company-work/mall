@@ -86,8 +86,6 @@ class Order extends React.Component {
 
 
     APP.SET_REFRESH();
-    return false;
-    /**/
     Axios.get(InterFace.getOrderUrl, {
         params: obj
       })

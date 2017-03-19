@@ -21,10 +21,10 @@ let config = Object.assign({}, baseConfig, {
   entry: entryArr,
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    /*new webpack.DllReferencePlugin({
+    new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require('../manifest.json')
-    }),*/
+    }),
     new webpack.NoErrorsPlugin()
   ],
   module: defaultSettings.getDefaultModules()

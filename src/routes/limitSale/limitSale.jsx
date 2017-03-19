@@ -50,7 +50,7 @@ class LimitSale extends React.Component {
   }
 
   JumpGoodsDetails(id) {
-    APP.JUMP_TO("goodsDetails.html?goodsId=" + id);
+    APP.JUMP_TO("goodsDetails.html?goodsId=" + id + "&isQuickly=Y");
   }
 
   countDown(time) {
@@ -98,8 +98,8 @@ class LimitSale extends React.Component {
 
   componentDidMount() {
     var self = this;
-    var nowSecond = self.convertSecond(GOKU.SYS_TIME);
-    nowSecond = 1489483223000;
+    var nowSecond = GOKU.SYS_TIME_SECOND;
+    //nowSecond = 1489483223000;
 
 
     APP.SET_REFRESH();
@@ -116,7 +116,7 @@ class LimitSale extends React.Component {
           var cache = [];
 
           data.forEach((item, index)=> {
-            var _second = self.convertSecond(item.startTime);
+            var _second = item.startTimeSecond;
             var _time = self.getTimeStr(item.startTime);
             var obj = {};
             obj.s = _second;
@@ -240,53 +240,176 @@ class LimitSale extends React.Component {
 
     self.state.tabsBody.map((item, index)=> {
 
-      var limitItem = [];
-      item.map((goods, num)=> {
-        limitItem.push(
-          <Layout onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} key={goods.goodsId} orient="row"
-                  className="goods-item">
-            <Layout orient="row" pack="center" align="center" className="g-img">
-              <img src={goods.picIcon}/>
-            </Layout>
-            <Layout orient="column" flex className="g-intro">
-              <p className="g-name">{goods.goodsTitle}</p>
-              <p className="g-price">
-                <span>10000</span>
-                <del>30000</del>
-              </p>
-              <div className="g-stock">
-                <div className="g-stock-txt">仅剩{goods.originalInventory}件</div>
-                <div className="g-stock-inner"></div>
-              </div>
-              <div className="g-btn">马上抢</div>
-            </Layout>
-          </Layout>
-        );
-      });
-      var _key = "s" + index;
       var tipsHtm;
+      var limitItem = [];
       if (_curIndex == index) {
         tipsHtm = <div className="tabs-intro-time">
           <div className="t-time">
             本场还剩<span>01:27:54</span>
           </div>
         </div>;
+
+
+        item.map((goods, num)=> {
+
+          var per = Math.ceil(goods.inventory / goods.originalInventory * 100);
+          var styles = {
+            width: per + "%"
+          };
+          var btnHtm;
+          if (goods.inventory > 0) {
+            btnHtm = <div className="g-btn">马上抢</div>;
+          } else {
+            btnHtm = <div className="g-btn g-btn-grey">抢光了</div>;
+          }
+          var gPrice, gSale;
+          if (goods.minUnion != null) {
+            gSale = goods.minUnion.unionPoint + "+ ￥" + goods.minUnion.unionRmb;
+            gPrice = goods.minUnionRegular.unionPoint + "+ ￥" + goods.minUnionRegular.unionRmb;
+          } else {
+            gSale = goods.minPoint;
+            gPrice = goods.minPointRegular;
+          }
+
+
+          limitItem.push(
+            <Layout onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} key={goods.goodsId} orient="row"
+                    className="goods-item">
+              <Layout orient="row" pack="center" align="center" className="g-img">
+                <img src={goods.picIcon}/>
+              </Layout>
+              <Layout orient="column" flex className="g-intro">
+                <p className="g-name">{goods.goodsTitle}</p>
+                <p className="g-price">
+                  <span>{gSale}</span>
+                  <del>{gPrice}</del>
+                </p>
+                <div className="g-stock">
+                  <div className="g-stock-txt">仅剩{goods.inventory}件</div>
+                  <div className="g-stock-inner" style={styles}></div>
+                </div>
+
+
+                {btnHtm}
+
+              </Layout>
+            </Layout>
+          );
+
+
+        });
       }
       else if (_curIndex > index) {
         tipsHtm = <div className="tabs-intro-time">
-          <div>
+          <div className="t-time">
             还有商品可以抢购哦
           </div>
         </div>;
+
+        item.map((goods, num)=> {
+
+
+          var per = Math.ceil(goods.inventory / goods.originalInventory * 100);
+          var styles = {
+            width: per + "%"
+          };
+          var btnHtm;
+          if (goods.inventory > 0) {
+            btnHtm = <div className="g-btn">马上抢</div>;
+          } else {
+            btnHtm = <div className="g-btn g-btn-grey">抢光了</div>;
+          }
+          var gPrice, gSale;
+          if (goods.minUnion != null) {
+            gSale = goods.minUnion.unionPoint + "+ ￥" + goods.minUnion.unionRmb;
+            gPrice = goods.minUnionRegular.unionPoint + "+ ￥" + goods.minUnionRegular.unionRmb;
+          } else {
+            gSale = goods.minPoint;
+            gPrice = goods.minPointRegular;
+          }
+
+
+          limitItem.push(
+            <Layout onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} key={goods.goodsId} orient="row"
+                    className="goods-item">
+              <Layout orient="row" pack="center" align="center" className="g-img">
+                <img src={goods.picIcon}/>
+              </Layout>
+              <Layout orient="column" flex className="g-intro">
+                <p className="g-name">{goods.goodsTitle}</p>
+                <p className="g-price">
+                  <span>{gSale}</span>
+                  <del>{gPrice}</del>
+                </p>
+                <div className="g-stock">
+                  <div className="g-stock-txt">仅剩{goods.inventory}件</div>
+                  <div className="g-stock-inner" style={styles}></div>
+                </div>
+
+                {btnHtm}
+
+              </Layout>
+            </Layout>
+          );
+
+        });
       }
       else {
         tipsHtm = <div className="tabs-intro-time">
-          <div>
+          <div className="t-time">
             即将开始 好物不可错过
           </div>
         </div>;
+
+
+        item.map((goods, num)=> {
+
+
+          var per = Math.ceil(goods.inventory / goods.originalInventory * 100);
+          var styles = {
+            width: per + "%"
+          };
+          var btnHtm = <div className="g-btn g-btn-grey g-btn-long">即将开抢</div>;
+
+          var gPrice, gSale;
+          if (goods.minUnion != null) {
+            gSale = goods.minUnion.unionPoint + "+ ￥" + goods.minUnion.unionRmb;
+            gPrice = goods.minUnionRegular.unionPoint + "+ ￥" + goods.minUnionRegular.unionRmb;
+          } else {
+            gSale = goods.minPoint;
+            gPrice = goods.minPointRegular;
+          }
+
+
+          limitItem.push(
+            <Layout onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} key={goods.goodsId} orient="row"
+                    className="goods-item">
+              <Layout orient="row" pack="center" align="center" className="g-img">
+                <img src={goods.picIcon}/>
+              </Layout>
+              <Layout orient="column" flex className="g-intro">
+                <p className="g-name">{goods.goodsTitle}</p>
+                <p className="g-price">
+                  <span>{gSale}</span>
+                  <del>{gPrice}</del>
+                </p>
+
+                <div className="g-stock g-stock-comming">
+                  <div className="g-stock-txt">限量{goods.inventory}件</div>
+                </div>
+
+                {btnHtm}
+
+              </Layout>
+            </Layout>
+          );
+
+
+        });
       }
 
+
+      var _key = "s" + index;
       _tabsBodyHtm.push(
         <Layout key={_key} orient="column" className="tabs-content">
           {tipsHtm}

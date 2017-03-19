@@ -86,24 +86,23 @@ class GoodsDetails extends React.Component {
 
   componentDidMount() {
     var self = this;
-
     APP.SET_REFRESH();
-
-    Test.initGoodsDetails();
+    //Test.initGoodsDetails();
 
     var gId = self.getLocationParams("goodsId"),
       flashSaleFlag = self.getLocationParams("flashSaleFlag") ? "Y" : "N";
 
     if (!gId) return false;
 
-
-    Axios.get(InterFace.initGoodsDetailsUrl, {
+    Axios.get(InterFace.initGoodsDetailsUrl,
+      {
         params: {
           goodsId: gId,
           isQuickly: flashSaleFlag
         }
       })
       .then(function (res) {
+        console.log(res);
         if (res.data.stat == 'ok') {
           var data = res.data;
           self.setState({
@@ -115,7 +114,7 @@ class GoodsDetails extends React.Component {
         }
       })
       .catch(function (error) {
-        APP.TOAST("服务器网线被挖断了", 1);
+        APP.TOAST(error, 1);
       });
   }
 
@@ -399,9 +398,135 @@ class GoodsDetails extends React.Component {
   }
 
   render() {
-    let self = this, state = self.state, goodsInfo = state.goodsInfo;
+    let
+      self = this,
+      state = self.state,
+      goodsInfo = state.goodsInfo;
     let dialogHtm, bannerHtm;
     let sCls = "g-content";
+
+
+    const params = {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      observer: true,//修改swiper自己或子元素时，自动初始化swiper
+      observeParents: true//修改swiper的父元素时，自动初始化swiper
+    };
+
+    //商品图片轮播
+    if (goodsInfo.coveList && goodsInfo.coveList.length) {
+
+      bannerHtm = goodsInfo.coveList.map((item, index)=> {
+        return (
+          <div key={index} className="g-img" alt={item.imgTitle}>
+            <img src={item.goodsImg}/>
+          </div>
+        )
+      });
+    }
+
+    //判断是不是特别的产品，有活动标识
+    var GoodsPriceHtm;
+    if (goodsInfo.isQuickly && goodsInfo.isQuickly === 'Y') {
+
+
+      var priceDefault, priceRegular;
+
+      if (goodsInfo.minUnion) {
+        priceDefault = goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb;
+        if (goodsInfo.minUnionRegular) {
+          priceRegular = goodsInfo.minUnionRegular.unionPoint + " + ￥" + goodsInfo.minUnionRegular.unionRmb;
+        }
+      }
+      else {
+        priceDefault = goodsInfo.pricePoint;
+        if (goodsInfo.pricePointRegular) {
+          priceRegular = goodsInfo.pricePointRegular;
+        }
+      }
+
+      var per = Math.ceil(goodsInfo.inventory / goodsInfo.originalInventory * 100);
+
+      var styles = {
+        width: per + "%"
+      };
+
+
+      //有组合显示组合价，没有组合显示积分价
+      GoodsPriceHtm = <Layout align="center" className="g-price-quick">
+        <Layout className="g-price-box" orient="column" flex>
+          <h3>限时特价</h3>
+          <div className="g-price">
+            <span className="g-price-sale">{priceDefault}</span>
+            <del className="g-price-regular">{priceRegular}</del>
+          </div>
+        </Layout>
+        <Layout className="g-stock-box" pack="center">
+          <div className="g-stock">
+            <div className="g-stock-txt">仅剩{goodsInfo.inventory}件</div>
+            <div className="g-stock-inner" style={styles}></div>
+          </div>
+        </Layout>
+      </Layout>
+
+    }
+    else {
+      //计算展示商品的价格
+      var
+        gPrice1,
+        gPrice1Htm, //积分价
+        gPrice2,
+        gPrice2Htm; //组合价
+
+
+      if (goodsInfo.maxPoint != null) {
+        gPrice1 = goodsInfo.minPoint + "-" + goodsInfo.maxPoint;
+        gPrice1Htm = <div className="g-price-box">积分价：
+          <div className="g-sale">{gPrice1}</div>
+        </div>
+      }
+      else if (goodsInfo.minPoint != null) {
+        gPrice1 = goodsInfo.minPoint;
+        gPrice1Htm = <div className="g-price-box">积分价：
+          <div className="g-sale">{gPrice1}</div>
+        </div>
+      }
+
+
+
+
+      if (goodsInfo.maxUnion != null) {
+        var maxP = goodsInfo.maxUnion,
+            minP = goodsInfo.minUnion;
+
+        gPrice2 = minP.unionPoint + " + ￥" + minP.unionRmb + " - " + maxP.unionPoint + " + ￥" + maxP.unionRmb;
+
+
+
+        gPrice2Htm = <div className="g-price-box">组合价：
+          <div className="g-sale">{gPrice2}</div>
+        </div>
+
+      }
+      else if (goodsInfo.minUnion != null) {
+        gPrice2 = goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb;
+        gPrice2Htm = <div className="g-price-box">组合价：
+          <div className="g-sale">{gPrice2}</div>
+        </div>
+      }
+
+
+
+
+      GoodsPriceHtm = <div className="g-price-default">{gPrice1Htm}{gPrice2Htm}</div>
+    }
+
+    //插入商品介绍HTML
+    if (document.querySelector("#gBody")) {
+      document.querySelector("#gBody").innerHTML = goodsInfo.goodsIntro;
+    }
+
+
     if (self.state.dialogFlag) {
 
       var skuPropsHtm = [];
@@ -517,46 +642,6 @@ class GoodsDetails extends React.Component {
     }
 
 
-    const params = {
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      observer: true,//修改swiper自己或子元素时，自动初始化swiper
-      observeParents: true//修改swiper的父元素时，自动初始化swiper
-    };
-
-    //商品图片轮播
-    if (goodsInfo.coveList) {
-      bannerHtm = goodsInfo.coveList.map((item, index)=> {
-        return (
-          <div key={index} className="g-img" alt={item.imgTitle}>
-            <img src={item.goodsImg}/>
-          </div>
-        )
-      });
-    }
-
-    //计算展示商品的价格
-    var gPrice1, gPrice2;
-    if (goodsInfo.minUnion) {
-      //gPrice1 = goodsInfo.maxPoint ? goodsInfo.minPoint + " - " + goodsInfo.maxPoint : goodsInfo.minPoint;
-      //gPrice2 = goodsInfo.maxUnion ? goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb + " - " + goodsInfo.maxPoint.unionPoint + " + ￥" + goodsInfo.maxPoint.unionRmb : (goodsInfo.minUnion.unionPoint + " + ￥" + goodsInfo.minUnion.unionRmb);
-    } else {
-      gPrice1 = goodsInfo.minPoint;
-      gPrice2 = goodsInfo.maxPoint;
-    }
-
-    //判断是不是特别的产品，有活动标识
-    var gTips;
-    if (goodsInfo.isShowTeJiao && goodsInfo.isShowTeJiao === 'yes') {
-      gTips = <span>{goodsInfo.picTop}</span>;
-    }
-
-    //插入商品介绍HTML
-    if (document.querySelector("#gBody")) {
-      document.querySelector("#gBody").innerHTML = goodsInfo.goodsIntro;
-    }
-
-
     return (
       <div className="goodsDetails-warp">
         <div className={sCls}>
@@ -567,8 +652,8 @@ class GoodsDetails extends React.Component {
             </Swiper>
             <div className="g-intro">
               <div className="g-name">{goodsInfo.goodsTitle}</div>
-              <div className="g-sale">{gPrice1}{gTips}</div>
-              <div className="g-price">{gPrice2}</div>
+
+              {GoodsPriceHtm}
             </div>
           </div>
           <div className="g-desc">

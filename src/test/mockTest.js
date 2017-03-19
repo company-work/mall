@@ -716,7 +716,7 @@ var Test = {
         "pricePointRegular": 200,  //积分原价
         "pricePoint": 100,        //积分现价
 
-        "isShowTeJiao": "no",
+        "isShowTeJiao": "yes",
         "picIcon": "小图",          //商品小图
         "priceRMB": 2,             //人民币价格
         "inventory": 19,           //商品当前库存(总库存)
@@ -770,7 +770,8 @@ var Test = {
       "effectiveTime": "2017.02.23 ~ 2017.02.24",   //活动有效时间
       "targetList": [     //专题关联的商品集合
         {
-          "startTime": "2017-03-14 10:00:00",    //开售时间
+          "startTime": "2017-03-18 10:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [                                 //该开售时间下的商品（商品属性的字段同商品详情）
             {
               "pricePointRegular": 3000,
@@ -813,7 +814,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 12:00:00",    //开售时间
+          "startTime": "2017-03-18 12:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 500,
@@ -894,7 +896,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 14:00:00",    //开售时间
+          "startTime": "2017-03-18 14:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 5000,
@@ -1165,7 +1168,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 16:00:00",    //开售时间
+          "startTime": "2017-03-18 16:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 100,
@@ -1284,7 +1288,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 18:00:00",    //开售时间
+          "startTime": "2017-03-18 18:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1528,7 +1533,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 20:00:00",    //开售时间
+          "startTime": "2017-03-18 20:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1580,7 +1586,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 22:00:00",    //开售时间
+          "startTime": "2017-03-18 22:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1632,7 +1639,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-14 24:00:00",    //开售时间
+          "startTime": "2017-03-18 24:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1684,7 +1692,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-15 08:00:00",    //开售时间
+          "startTime": "2017-03-19 08:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1736,7 +1745,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-15 10:00:00",    //开售时间
+          "startTime": "2017-03-19 10:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1788,7 +1798,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-15 12:00:00",    //开售时间
+          "startTime": "2017-03-19 12:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
@@ -1840,7 +1851,8 @@ var Test = {
           ]
         },
         {
-          "startTime": "2017-03-15 14:00:00",    //开售时间
+          "startTime": "2017-03-19 14:00:00",    //开售时间
+          "startTimeSecond": "1489543200000",    //开售时间
           "p": [
             {
               "pricePointRegular": 200,
