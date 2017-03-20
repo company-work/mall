@@ -24,7 +24,7 @@ class Order extends React.Component {
       keyboardFlag: false,
       address: {},
       telNum: "",
-      iframeSecretUrl: "http://192.168.2.246:9100/index.html",
+      iframeSecretUrl: "http://192.168.2.246:9001/assets/index.html",
       goodsInfo: {}
     }
   }
@@ -63,26 +63,27 @@ class Order extends React.Component {
     var _p = self.getLocationParams("p");
     var obj = {};
     obj.goodsId = _g;
-    if (_s != null) {
+    if (_s) {
       obj.skuId = _s;
     }
     obj.quantity = _q;
     obj.tradePayType = _p;
 
 
-    $.ajax({
-      url:"http://192.168.2.246:9001/assets/index.html",
-      type:"get",
-      dataType:"html",
-      success:function(result){
+   /* $.ajax({
+      url: "http://192.168.2.246:9001/assets/index.html",
+      type: "get",
+      dataType: "html",
+      success: function (result) {
         var dataHtm = result;
-
+        self.state.keyboardFlag = true;
+        self.setState(self.state);
         window.frames["iFrame"].document.write(dataHtm);
       },
-      error:function(msg){
+      error: function (msg) {
         console.log(msg);
       }
-    });
+    });*/
 
 
     APP.SET_REFRESH();
@@ -180,12 +181,17 @@ class Order extends React.Component {
         self.submitOrderReal();
       }
     }
-    else if (state.goodsInfo.type == "ENTRY") {
+    else if (state.goodsInfo.type == "ENTITY") {
+
       //判断地址
       if (state.address == null) {
         APP.TOAST("请完善收货地址", 1);
         return false;
       }
+
+      self.submitOrderReal();
+    }else{
+      self.submitOrderReal();
     }
 
   }
@@ -193,7 +199,7 @@ class Order extends React.Component {
   submitOrderReal() {
     var self = this,
       state = self.state;
-    console.log(self.state);
+
     var obj = {};
     if (state.address != null) {
       obj.userName = state.address.name;
@@ -206,24 +212,58 @@ class Order extends React.Component {
     }
 
     obj.userId = "8201506170006346";//测试的时候写死
-    obj.tradeOrderNO = state.goodsInfo.tradeOrderNO;
-    obj.extraParam = state.telNum;
-
     obj.orderId = state.goodsInfo.orderId;
-    obj.pricePoint = state.goodsInfo.pricePoint;
-    obj.unionRmb = state.goodsInfo.priceRMB;
+    if (state.telNum) {
+      obj.extraParam = state.telNum;
+    }
+
 
     Axios.get(InterFace.putOrderUrl, {
         params: obj
       })
       .then(function (res) {
         var data = res.data;
-        if (!res.data.succ) {
-          if (data.grantUrl) {
-            self.state.iframeSecretUrl = data.grantUrl;
-          }
-          self.state.keyboardFlag = true;
-          self.setState(self.state);
+        var payTools = state.goodsInfo.payToolsList,
+            payToolStr = JSON.stringify(payTools);
+        if (data.success) {
+          $.ajax({
+            url: InterFace.checkPayUrl,
+            type: "POST",
+            data: {
+              tradeOrderNO:data.tradeOrderNO,
+              orderId:state.goodsInfo.orderId,
+              toolsInfo:payToolStr,
+              pricePoint:data.pricePoint,
+              unionRmb:data.unionRmb
+            },
+            success: function (res) {
+              console.log(res);
+
+              $.ajax({
+                url: "http://192.168.2.246:9001/assets/index.html",
+                type: "get",
+                dataType: "html",
+                success: function (result) {
+                  var dataHtm = result;
+                  self.state.keyboardFlag = true;
+                  self.setState(self.state);
+                  window.frames["iFrame"].document.write(dataHtm);
+                },
+                error: function (msg) {
+                  console.log(msg);
+                }
+              });
+
+
+
+
+            },
+            error: function () {
+
+            }
+          });
+
+
         }
       })
       .catch(function (error) {
@@ -266,7 +306,7 @@ class Order extends React.Component {
     if (state.keyboardFlag) {
       keyboardHtm = <div onClick={self.closeKeyBoard.bind(self)} className="keyboardBox">
         <div className="keyboardBox-inner">
-          <iframe width="100%" height="100%" id="iFrame" name="iFrame"></iframe>
+          <iframe width="100%" src={state.iframeSecretUrl} height="100%" id="iFrame" name="iFrame"></iframe>
         </div>
       </div>
     }
@@ -340,9 +380,12 @@ class Order extends React.Component {
       priceHtm = <div className="g-price">{goodsInfo.pricePoint}</div>
     }
     else {
-      priceHtm = <div className="g-price">{goodsInfo.pricePoint} + ￥{goodsInfo.priceRMB}</div>
+      if (goodsInfo.pricePoint) {
+        priceHtm = <div className="g-price">{goodsInfo.pricePoint} + ￥{goodsInfo.priceRMB}</div>
+      }
       pribotHtm = <span>+ ￥{goodsInfo.priceRMB}</span>;
-      console.log(goodsInfo);
+
+
       if (goodsInfo.payToolsList && goodsInfo.payToolsList != null && goodsInfo.payToolsList.length > 0) {
         goodsInfo.payToolsList.forEach((item, index)=> {
           if (item.fundBillType == "CARD") {

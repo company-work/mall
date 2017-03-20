@@ -24,50 +24,49 @@ class QuickPay extends React.Component {
       vTimeout: 60,
       isGetCodeFlag: false,
       codeBtnTxt: "验证码",
+      alertTxt: "",
       btnFlag: true,
-      point: "10000",
-      money: "160",
-      count: "招商银行（尾号5136）",
-      tel: "",
+      point: "",
+      money: "",
+      count: "",
+      tel: "12141",
       code: "",
       formFlag: false
     }
   }
 
-
   componentDidMount() {
     var self = this;
 
-    return false;
-    Axios.get(InterFace.getOrderUrl, {
+    Axios.get(InterFace.initQuickUrl, {
         params: {
-          goodsId: _g,
-          skuId: _s,
-          quantity: _q,
-          tradePayType: "UNION"
+          orderId: 91150,
+          tradeOrderNO: "66082017031700918567",
+          channelApiId: 382
         }
       })
       .then(function (res) {
-        if (res.data.stat == "ok") {
-          var obj = {};
-          var data = res.data.orderDetailInfo;
-          if (data.detailAddress) {
-            obj.name = data.userName;
-            obj.tel = data.phoneNumber;
-            obj.address = data.detailAddress;
-            obj.dFlag = true;
-            self.state.address = obj;
+        var data = res.data;
+        console.log(data);
+        if (data.success) {
+          self.state.point = data.pricePoint;
+          self.state.money = data.unionRmb;
+          self.state.tel = data.cell;
+          self.state.alertTxt = data.cellNote;
 
-          } else {
-            self.state.address = null;
-          }
-          self.state.goodsInfo = data;
-          self.setState(self.state)
-        } else {
-          APP.TOAST(res.data.msg, 1);
+          var payTools = data.payTools;
+          payTools.forEach((item, index)=> {
+            if (item.fundBillType == "CARD") {
+              self.state.count = item.toolName + "(尾号" + item.toolNo + ")";
+            }
+          });
+
+          self.setState(self.state);
+
         }
       })
       .catch(function (error) {
+
         APP.TOAST(error, 1);
       });
   }
@@ -85,7 +84,7 @@ class QuickPay extends React.Component {
 
   setTelNum(e) {
     var val = e.target.value;
-    e.target.value = val.replace(/[^\d]|^[^1]+/ig,"").replace(/(1\d{2})(\d{4})?(\d{4})?/ig,"$1 $2 $3").replace(/\s+$/ig,"").replace(/\s+/ig," ");
+    e.target.value = val.replace(/[^\d]|^[^1]+/ig, "").replace(/(1\d{2})(\d{4})?(\d{4})?/ig, "$1 $2 $3").replace(/\s+$/ig, "").replace(/\s+/ig, " ");
 
 
     if (val.length == 13 && this.state.code.length == 6) {
@@ -104,7 +103,7 @@ class QuickPay extends React.Component {
 
 
     this.setState({
-      tel: newValue
+      tel: e.target.value
     })
   }
 
@@ -122,7 +121,7 @@ class QuickPay extends React.Component {
 
   setVerifyCode(e) {
     var val = e.target.value;
-    if (val.length == 6 && this.state.tel.length == 11) {
+    if (val.length == 6 && this.state.tel.length == 13) {
       if (this.state.isGetCodeFlag) {
         this.setState({
           formFlag: true
@@ -187,6 +186,8 @@ class QuickPay extends React.Component {
   render() {
     let self = this;
 
+    console.log(self.state);
+
     let codBtnClass = this.state.btnFlag ? 'pay-code-btn' : 'pay-code-btn disabled';
 
     let btnClass = this.state.formFlag ? 'pay-btn' : 'pay-btn disabled';
@@ -208,7 +209,8 @@ class QuickPay extends React.Component {
           <Layout align="center" className="layout-input">
             <Layout className="l-i-t">手机号</Layout>
             <Layout flex>
-              <input type="tel" pattern="[0-9]*" onChange={self.setTelNum.bind(self)} maxLength="13"  />
+              <input type="tel" pattern="[0-9]*" onChange={self.setTelNum.bind(self)} value={self.state.tel}
+                     maxLength="13"/>
             </Layout>
             <div onClick={self.tipsInfo.bind(self)} className="l-i-i"></div>
           </Layout>

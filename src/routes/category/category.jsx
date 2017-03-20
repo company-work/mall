@@ -199,6 +199,11 @@ class Category extends React.Component {
 
   }
 
+
+  JumpGoodsDetails(id) {
+    APP.JUMP_TO("goodsDetails.html?goodsId=" + id);
+  }
+
   /*--页面渲染--*/
   render() {
     let
@@ -225,7 +230,7 @@ class Category extends React.Component {
             var gSale = goods.unionPointRegular && goods.unionRmbRegular ? goods.unionPointRegular + " + ￥" + goods.unionRmbRegular : goods.pricePointRegular;
 
             gItemHtm.push(
-              <div key={num} className="g-item">
+              <div onClick={self.JumpGoodsDetails.bind(self,goods.goodsId)} key={num} className="g-item">
                 <div className="g-img">
                   <img src={goods.picIcon}/>
                 </div>

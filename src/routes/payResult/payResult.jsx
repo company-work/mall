@@ -48,6 +48,10 @@ class PayResult extends React.Component {
       });
   }
 
+  JumpIndex() {
+    APP.JUMP_TO("http://192.168.2.246:9001/index.html");
+  }
+
   render() {
     let self = this;
     let rTypeCls = "r-info ";// r-info-success , r-info-error , r-info-process
@@ -61,7 +65,7 @@ class PayResult extends React.Component {
           </Layout>
         </Layout>
         <Layout className="r-btn">
-          <Layout align="center" pack="center" className="r-btn-inner">确定</Layout>
+          <Layout align="center" pack="center" onClick={self.JumpIndex.bind(self)} className="r-btn-inner">确定</Layout>
         </Layout>
       </div>
     );

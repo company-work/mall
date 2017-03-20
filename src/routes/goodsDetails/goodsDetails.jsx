@@ -62,7 +62,10 @@ class GoodsDetails extends React.Component {
   ReduceNum() {
     var self = this;
     var num = self.state.selectNum;
-    if (num == 0) return;
+    if (num == 1) {
+      APP.TOAST("购买数量不能小于1", 2);
+      return;
+    }
     self.setState({
       selectNum: --num
     });
@@ -72,6 +75,7 @@ class GoodsDetails extends React.Component {
     var val = e.target.value;
     var self = this;
     var stock = self.state.normsInfo.stock;
+    
     if (val > stock) {
       APP.TOAST("数量不能超过当前库存", 1);
       return;
@@ -88,6 +92,12 @@ class GoodsDetails extends React.Component {
     var self = this;
     APP.SET_REFRESH();
     //Test.initGoodsDetails();
+
+    APP.PAGE_WILL_LOAD(function () {
+      self.setState({
+        dialogFlag: false
+      })
+    })
 
     var gId = self.getLocationParams("goodsId"),
       flashSaleFlag = self.getLocationParams("flashSaleFlag") ? "Y" : "N";
@@ -183,7 +193,6 @@ class GoodsDetails extends React.Component {
         else {
           APP.TOAST(res.data.msg, 1);
           console.log(res.data.msg);
-          alert(res.data.msg);
         }
       })
       .catch(function (error) {
@@ -315,10 +324,13 @@ class GoodsDetails extends React.Component {
         tradePayType: _p
       };
 
+
       var _skuId;
       if (data.normsDatabase[_keyNum]) {
         params.skuId = data.normsDatabase[_keyNum].id;
+        _skuId = data.normsDatabase[_keyNum].id;
       }
+
 
       var qs = require('qs');
       Axios.get(InterFace.checkOrderUrl, {
@@ -493,14 +505,11 @@ class GoodsDetails extends React.Component {
       }
 
 
-
-
       if (goodsInfo.maxUnion != null) {
         var maxP = goodsInfo.maxUnion,
-            minP = goodsInfo.minUnion;
+          minP = goodsInfo.minUnion;
 
         gPrice2 = minP.unionPoint + " + ￥" + minP.unionRmb + " - " + maxP.unionPoint + " + ￥" + maxP.unionRmb;
-
 
 
         gPrice2Htm = <div className="g-price-box">组合价：
@@ -514,8 +523,6 @@ class GoodsDetails extends React.Component {
           <div className="g-sale">{gPrice2}</div>
         </div>
       }
-
-
 
 
       GoodsPriceHtm = <div className="g-price-default">{gPrice1Htm}{gPrice2Htm}</div>

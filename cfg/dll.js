@@ -9,7 +9,6 @@ module.exports = {
       'react',
       'react-dom',
       './src/public/libs/APP.js',
-      './src/public/libs/interFace.js',
       './src/public/libs/swiper/swiper.min.js',
       './src/public/libs/swiper/swiper.min.css'
     ]

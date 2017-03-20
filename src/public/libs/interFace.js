@@ -21,5 +21,10 @@ module.exports = {
   getOrderUrl: host + "/activity/order/orderDetail.do",
   subOrderUrl: host + "/activity/order/orderSubmit.do",
   getOrderStateUrl: host + "/activity/order/getTradeResult.do",
-  putOrderUrl: host + "/activity/order/orderSubmit.do"
+  putOrderUrl: host + "/activity/order/orderSubmit.do",
+  checkPayUrl: host + "/activity/pay/tradePreCheck.do",
+  initQuickUrl: host + "/activity/pay/quickPayInit.do",
+  getVerifyCodeUrl: host + "/activity/pay/quickPayVerify.do",
+  payOfPoint: host + "/activity/order/payOrder.do",
+  payOfRmb: host + "/activity/order/payOrder.do"
 };
