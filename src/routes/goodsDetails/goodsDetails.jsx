@@ -75,7 +75,7 @@ class GoodsDetails extends React.Component {
     var val = e.target.value;
     var self = this;
     var stock = self.state.normsInfo.stock;
-    
+
     if (val > stock) {
       APP.TOAST("数量不能超过当前库存", 1);
       return;

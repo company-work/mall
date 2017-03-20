@@ -7,6 +7,8 @@ import InterFace from 'public/libs/interFace.js';
 import Axios from 'axios';
 import Test from '../../test/mockTest.js';
 
+import $ from 'zepto';
+
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
 import './quickPay.scss';
@@ -31,27 +33,66 @@ class QuickPay extends React.Component {
       count: "",
       tel: "12141",
       code: "",
-      formFlag: false
+      formFlag: false,
+
+
+      smsToken: "",
+      quickPayNo: "",
+      quickPayWay: ""
+    }
+  }
+
+
+  /*--获取地址栏参数--*/
+  getLocationParams(name) {
+    var href = window.location.href,
+      subIndex = href.indexOf("?"),
+      paramsObj = {};
+    if (subIndex != -1) {
+      var params = href.substr(subIndex + 1);
+      var paramsMany = params.indexOf("&");
+      if (paramsMany != -1) {
+        var paramsArr = params.split("&");
+        paramsArr.forEach((item, index)=> {
+          paramsObj[item.split("=")[0]] = item.split("=")[1];
+        })
+      } else {
+        paramsObj[params.split("=")[0]] = params.split("=")[1];
+      }
+    }
+
+    if (paramsObj.hasOwnProperty(name)) {
+      return paramsObj[name];
+    } else {
+      return null
     }
   }
 
   componentDidMount() {
     var self = this;
+    var oid = self.getLocationParams("oid");
+    var tid = self.getLocationParams("tid");
+    var pid = self.getLocationParams("pid");
+
+    if (!oid || !tid || !pid) {
+
+      APP.TOAST("参数错误", 2);
+      return false;
+    }
 
     Axios.get(InterFace.initQuickUrl, {
         params: {
-          orderId: 91150,
-          tradeOrderNO: "66082017031700918567",
-          channelApiId: 382
+          orderId: oid,
+          tradeOrderNO: tid,
+          channelApiId: pid
         }
       })
       .then(function (res) {
         var data = res.data;
-        console.log(data);
         if (data.success) {
           self.state.point = data.pricePoint;
           self.state.money = data.unionRmb;
-          self.state.tel = data.cell;
+          self.state.tel = self.inputTelWhite(data.cell);
           self.state.alertTxt = data.cellNote;
 
           var payTools = data.payTools;
@@ -62,13 +103,16 @@ class QuickPay extends React.Component {
           });
 
           self.setState(self.state);
-
         }
       })
       .catch(function (error) {
 
         APP.TOAST(error, 1);
       });
+  }
+
+  inputTelWhite(val) {
+    return val.replace(/[^\d]|^[^1]+/ig, "").replace(/(1\d{2})(\d{4})?(\d{4})?/ig, "$1 $2 $3").replace(/\s+$/ig, "").replace(/\s+/ig, " ");
   }
 
   isTel(num) {
@@ -109,19 +153,61 @@ class QuickPay extends React.Component {
 
   getVerifyHandler() {
     var self = this;
+    var oid = self.getLocationParams("oid");
+    var tid = self.getLocationParams("tid");
+    var pid = self.getLocationParams("pid");
+
+
     if (self.state.btnFlag) {
       self.setState({
         isGetCodeFlag: true
       });
-      self.countDown();
-      console.log("click");
+      var cel = self.state.tel.replace(/\s/g, "");
+      if (cel.length != 11) {
+        APP.TOAST("手机号码格式不正确");
+        return false;
+      }
+
+      APP.LOADING("正在发送...");
+
+      Axios.get(InterFace.getVerifyCodeUrl, {
+          params: {
+            orderId: oid,
+            tradeOrderNO: tid,
+            channelApiId: pid,
+            cell: cel
+          }
+        })
+        .then(function (res) {
+          var data = res.data;
+          if (data.success) {
+            APP.CLOSE_LOADING();
+            APP.TOAST("发送成功", 1);
+
+            self.setState({
+              smsToken: data.smsToken,
+              quickPayNo: data.quickPaySerialNo,
+              quickPayWay: data.verifyWay
+            });
+
+            self.countDown();
+          } else {
+            APP.TOAST("发送失败", 2);
+          }
+        })
+        .catch(function (error) {
+          APP.TOAST(error, 1);
+        });
+
     }
 
   }
 
   setVerifyCode(e) {
-    var val = e.target.value;
+    var val = e.target.value, self = this;
+
     if (val.length == 6 && this.state.tel.length == 13) {
+
       if (this.state.isGetCodeFlag) {
         this.setState({
           formFlag: true
@@ -132,18 +218,21 @@ class QuickPay extends React.Component {
         formFlag: false
       })
     }
+
     if (val.length > 6) {
+      this.setState({
+        formFlag: true
+      });
       return false;
     }
+
     this.setState({
       code: val
     })
   }
 
   countDown() {
-
     let self = this;
-    console.log(self);
     let oTime = self.state.vTimeout;
     if (oTime == 0) {
       self.setState({
@@ -174,8 +263,47 @@ class QuickPay extends React.Component {
   }
 
   submitForm() {
-    if (this.state.formFlag) {
-      APP.JUMP_TO("payResult.html");
+    var self = this;
+    var oid = self.getLocationParams("oid");
+    var tid = self.getLocationParams("tid");
+    var pid = self.getLocationParams("pid");
+    var type = self.getLocationParams("type");
+    if (self.state.formFlag) {
+
+      $.ajax({
+        url: InterFace.payOfRmb,
+        type: "POST",
+        crossDomain: true,
+        xhrFields: {
+          withCredentials: true
+        },
+        data: {
+          userId: "8201408060003261",
+          tradeOrderNO: tid,
+          orderId: oid,
+          cell: self.state.tel.replace(/\s/g, ""),
+          quickSerialNo: self.state.quickPayNo,
+          smsToken: self.state.smsToken,
+          validCode: self.state.code,
+          //verifyWay: self.state.quickPayWay,
+          verifyWay: "ONESELF",
+          channelApiId: pid
+        },
+        beforeSend: function () {
+          APP.LOADING("正在提交...");
+        },
+        success: function (res) {
+          APP.CLOSE_LOADING();
+          if (res.success) {
+            APP.JUMP_TO("payResult.html?tid=" + tid + "&type=" + type)
+          } else {
+            APP.TOAST(res.message, 2);
+          }
+        },
+        error: function (err) {
+          APP.TOAST(err, 2);
+        }
+      });
     }
   }
 
@@ -185,11 +313,7 @@ class QuickPay extends React.Component {
 
   render() {
     let self = this;
-
-    console.log(self.state);
-
     let codBtnClass = this.state.btnFlag ? 'pay-code-btn' : 'pay-code-btn disabled';
-
     let btnClass = this.state.formFlag ? 'pay-btn' : 'pay-btn disabled';
 
     return (

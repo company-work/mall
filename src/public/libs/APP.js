@@ -87,12 +87,11 @@ module.exports = {
       window.WinJSBridge.call('cache', 'save', {key: key, data: data});
     });
   },
-  GET_CACHE: function (key) {
-    if (!key) return;
+  GET_CACHE: function (key,fn) {
     document.addEventListener('WinJSBridgeReady', function () {
       window.WinJSBridge.call('cache', 'get', {key: key}, function (resp) {
-
-
+        if(fn) fn(resp);
+        //alert(JSON.stringify(resp));
       });
     });
   },

@@ -8,12 +8,16 @@ import Axios from 'axios';
 import Test from '../../test/mockTest.js';
 import $ from 'zepto';
 
+import Cookies from 'public/libs/cookie.js';
+
 import 'public/style/base.scss';
 import 'public/style/iconfont.css';
 import './order.scss';
+
 let domRoot = new Dom("page-order");
 
-
+window.clickIndex = 0;
+window.secretArr = [];
 window.APP = require('../../public/libs/APP');
 
 //每个页面都作为一个组件
@@ -24,7 +28,23 @@ class Order extends React.Component {
       keyboardFlag: false,
       address: {},
       telNum: "",
-      iframeSecretUrl: "http://192.168.2.246:9001/assets/index.html",
+      point: "100",
+      money: "",
+      verifySecretUrl: "",
+      keywordNum: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "11",
+        "0",
+        "12"
+      ],
       goodsInfo: {}
     }
   }
@@ -62,6 +82,8 @@ class Order extends React.Component {
     var _q = self.getLocationParams("q");
     var _p = self.getLocationParams("p");
     var obj = {};
+
+
     obj.goodsId = _g;
     if (_s) {
       obj.skuId = _s;
@@ -70,23 +92,12 @@ class Order extends React.Component {
     obj.tradePayType = _p;
 
 
-   /* $.ajax({
-      url: "http://192.168.2.246:9001/assets/index.html",
-      type: "get",
-      dataType: "html",
-      success: function (result) {
-        var dataHtm = result;
-        self.state.keyboardFlag = true;
-        self.setState(self.state);
-        window.frames["iFrame"].document.write(dataHtm);
-      },
-      error: function (msg) {
-        console.log(msg);
-      }
-    });*/
-
-
     APP.SET_REFRESH();
+
+    APP.PAGE_WILL_LOAD(function () {
+      APP.REFRESH();
+    });
+
     Axios.get(InterFace.getOrderUrl, {
         params: obj
       })
@@ -105,6 +116,10 @@ class Order extends React.Component {
             self.state.address = null;
           }
           self.state.goodsInfo = data;
+
+          self.state.point = data.pricePoint;
+          self.state.money = data.unionRmb;
+
           self.setState(self.state)
         } else {
           APP.TOAST(res.data.msg, 1);
@@ -132,6 +147,170 @@ class Order extends React.Component {
     }, "329")
   }
 
+  closeDialog() {
+    var self = this;
+    if (APP.BROWSER.isclient) {
+      APP.CONFIRM("温馨提示", "亲，确认放弃支付吗", function (data) {
+        var
+          res = data.response,
+          btnIndex = res.buttonIndex;
+        if (btnIndex == 1) {
+          self.setState({
+            keyboardFlag: false
+          })
+        }
+      })
+    } else {
+      self.setState({
+        keyboardFlag: false
+      })
+    }
+  }
+
+  entryNum(index, item, evt) {
+    var
+      self = this,
+      $this = $(evt.target),
+      $num = item,
+      $discBox = $(".o-secret");
+
+
+    switch ($num) {
+      case "12":
+        console.log("删除");
+
+
+        if (secretArr.length == 0) return false;
+        clickIndex--;
+        $discBox.find("div").eq(clickIndex).removeClass("active");
+        secretArr.pop();
+
+        break;
+      case "11":
+
+        break;
+      default:
+        console.log("添加");
+
+        if (secretArr.length == 6) return false;
+
+        $discBox.find("div").eq(clickIndex).addClass("active");
+        secretArr.push($num);
+        clickIndex++;
+
+        if (secretArr.length == 6) {
+          self.checkSecret();
+          return false;
+        }
+        break;
+    }
+
+  }
+
+  checkSecret() {
+    var self = this, state = self.state;
+    if (secretArr.length == 6) {
+      var secret = secretArr.join("");
+
+      //组合支付
+      var
+        tId = state.goodsInfo.tradeOrderNO,
+        oId = state.goodsInfo.orderId;
+
+      var yy_tra_code = Cookies.getCookie("yylc_trade_code");
+
+      console.log(yy_tra_code);
+
+      $.ajax({
+        url: self.state.verifySecretUrl,
+        type: "get",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        data: {
+          paypwd: secret,
+          yylc_trade_code: "",
+          token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb"
+        },
+        success: function (res) {
+
+          var payToolStr = JSON.stringify(state.goodsInfo.payToolsList);
+
+          //密码验证之后再次进行支付前校验
+          $.ajax({
+            //url: "http://activity.yingyinglicai.com:8090/activity/pay/tradePreCheck.do",
+            url: InterFace.checkPayUrl,
+            type: "POST",
+            crossDomain: true,
+            xhrFields: {
+              withCredentials: true
+            },
+            data: {
+              token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
+              userId: "8201408060003261",
+              tradeOrderNO: state.goodsInfo.tradeOrderNO, //支付单号
+              orderId: state.goodsInfo.orderId,//支付单号
+              toolsInfo: payToolStr,           //支付工具
+              pricePoint: state.goodsInfo.pricePoint,     //积分
+              unionRmb: state.goodsInfo.unionRmb          //人民币
+            },
+            success: function (res) {
+
+              //根据返回值判断去哪里
+              if (res.quicklyPay) {
+                var pId = res.channelApiId;
+                APP.JUMP_TO("quickPay.html?tid=" + tId + "&oid=" + oId + "&pid=" + pId + "&type=" + self.state.goodsInfo.type);
+              }
+              else {
+                APP.LOADING("正在支付...");
+
+                $.ajax({
+                  //url: "http://activity.yingyinglicai.com:8090/activity/order/payOrder.do",
+                  url: InterFace.payOfPoint,
+                  type: "POST",
+                  crossDomain: true,
+                  xhrFields: {
+                    withCredentials: true
+                  },
+                  data: {
+                    token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
+                    userId: "8201408060003261",
+                    tradeOrderNO: tId,
+                    orderId: oId,
+                    channelApiId: res.channelApiId    //人民币
+                  },
+                  success: function (res) {
+                    if (res.success) {
+                      APP.JUMP_TO("payResult.html?tid=" + tId + "&type=" + self.state.goodsInfo.type)
+                    } else {
+                      APP.TOAST(res.message, 1);
+                    }
+                  },
+                  error: function (error) {
+                    APP.CLOSE_LOADING();
+                    APP.TOAST(error, 1);
+                  }
+                });
+
+              }
+
+            },
+            error: function () {
+
+            }
+          });
+
+        },
+        error: function () {
+
+        }
+      });
+
+      //输入密码之后
+    }
+
+  }
 
   isTel(num) {
     let s = num;
@@ -190,7 +369,7 @@ class Order extends React.Component {
       }
 
       self.submitOrderReal();
-    }else{
+    } else {
       self.submitOrderReal();
     }
 
@@ -205,7 +384,8 @@ class Order extends React.Component {
       obj.userName = state.address.name;
       obj.detailAddress = state.address.address;
       obj.phoneNumber = state.address.tel;
-    } else {
+    }
+    else {
       obj.userName = "";
       obj.detailAddress = "";
       obj.phoneNumber = "";
@@ -223,46 +403,42 @@ class Order extends React.Component {
       })
       .then(function (res) {
         var data = res.data;
-        var payTools = state.goodsInfo.payToolsList,
-            payToolStr = JSON.stringify(payTools);
+        var
+          payTools = state.goodsInfo.payToolsList,
+          payToolStr = JSON.stringify(payTools);
         if (data.success) {
           $.ajax({
+            //url: "http://activity.yingyinglicai.com:8090/activity/pay/tradePreCheck.do",
             url: InterFace.checkPayUrl,
             type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+
             data: {
-              tradeOrderNO:data.tradeOrderNO,
-              orderId:state.goodsInfo.orderId,
-              toolsInfo:payToolStr,
-              pricePoint:data.pricePoint,
-              unionRmb:data.unionRmb
+              token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
+              userId: "8201408060003261",
+              tradeOrderNO: data.tradeOrderNO, //支付单号
+              orderId: state.goodsInfo.orderId,//支付单号
+              toolsInfo: payToolStr,           //支付工具
+              pricePoint: data.pricePoint,     //积分
+              unionRmb: data.unionRmb          //人民币
             },
             success: function (res) {
-              console.log(res);
-
-              $.ajax({
-                url: "http://192.168.2.246:9001/assets/index.html",
-                type: "get",
-                dataType: "html",
-                success: function (result) {
-                  var dataHtm = result;
-                  self.state.keyboardFlag = true;
-                  self.setState(self.state);
-                  window.frames["iFrame"].document.write(dataHtm);
-                },
-                error: function (msg) {
-                  console.log(msg);
-                }
-              });
-
-
-
+              if (res.toGrant) {
+                self.state.keyboardFlag = true;
+                self.state.verifySecretUrl = res.grantUrl;
+                self.setState(self.state);
+              } else {
+                APP.TOAST(res.err_msg, 1);
+              }
 
             },
-            error: function () {
-
+            error: function (error) {
+              APP.TOAST(error, 1);
             }
           });
-
 
         }
       })
@@ -304,9 +480,50 @@ class Order extends React.Component {
 
     //支付密码的键盘
     if (state.keyboardFlag) {
-      keyboardHtm = <div onClick={self.closeKeyBoard.bind(self)} className="keyboardBox">
-        <div className="keyboardBox-inner">
-          <iframe width="100%" src={state.iframeSecretUrl} height="100%" id="iFrame" name="iFrame"></iframe>
+
+      var kNumHtm = state.keywordNum.map((item, index)=> {
+        var clsName = "k-num k-num-" + item;
+        return (
+          <div onClick={self.entryNum.bind(self,index,item)} className={clsName}>{item}</div>
+        )
+      });
+
+
+      var priceHtm;
+      if (state.money) {
+        priceHtm =
+          <div className="o-price">￥{self.state.money} + <span className="icon-point-grey">{self.state.point}</span>
+          </div>
+      } else {
+        priceHtm = <div className="o-price"><span className="icon-point-grey">{self.state.point}</span></div>
+      }
+
+
+      keyboardHtm = <div className="o-password">
+        <div className="o-p-mask"></div>
+        <div className="o-p-body">
+          <div className="o-title">请输入支付密码<i onClick={self.closeDialog.bind(self)} className="iconfont icon-close"></i>
+          </div>
+          <div className="o-info">
+            <div>金额</div>
+            {priceHtm}
+            <div className="o-secret">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div pack="center" align="center" className="o-tips">
+              <div className="o-tips-inner">盈盈理财安全键盘</div>
+            </div>
+          </div>
+          <div className="o-keyboard">
+            <div className="o-keyboard-inner">
+              {kNumHtm}
+            </div>
+          </div>
         </div>
       </div>
     }

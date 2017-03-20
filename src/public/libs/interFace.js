@@ -1,5 +1,18 @@
 'use strict';
-var host = "http://192.168.2.242:8090";
+var host;
+var _host = window.location.host;
+var _index = _host.indexOf(":");
+if (_index != -1) {
+  var kou = _host.substr(_index + 1);
+  if(kou!=9310){
+    host= "http://activity.yingyinglicai.com:8090";
+  }else{
+    host= "http://192.168.2.242:8090";
+  }
+}
+
+host= "http://activity.yingyinglicai.com:8090";
+
 //var host = "";
 module.exports = {
   initIndexUrl: host + "/activity/banner/appBannerList.do?channel=APP_INDEX",
@@ -26,5 +39,5 @@ module.exports = {
   initQuickUrl: host + "/activity/pay/quickPayInit.do",
   getVerifyCodeUrl: host + "/activity/pay/quickPayVerify.do",
   payOfPoint: host + "/activity/order/payOrder.do",
-  payOfRmb: host + "/activity/order/payOrder.do"
+  payOfRmb: host + "/activity/pay/quickPaySubmit.do"
 };

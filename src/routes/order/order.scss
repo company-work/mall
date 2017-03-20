@@ -209,6 +209,7 @@
   }
 
   /*--支付密码--*/
+  /*--支付密码--*/
   .o-password {
     position: absolute;
     left: 0;
@@ -244,8 +245,6 @@
       i {
         position: absolute;
         right: 30px;
-        top: 50%;
-        transform: translate(0, -50%);
         font-size: 30px;
         color: #999;
       }
@@ -267,6 +266,9 @@
         background: #e0e0e0;
         content: "";
       }
+      .o-price{
+        margin: 5px 0 0 0;
+      }
       .o-secret {
         width: 488px;
         height: 88px;
@@ -274,8 +276,15 @@
         margin: 20px auto 40px;
         border-radius: 10px;
         background: #f8f8f8;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+
         & > div {
+          -webkit-box-flex: 1;
           position: relative;
+          display: -webkit-box;
+          -webkit-box-align: center;
+          -webkit-box-pack: center;
           &:after {
             position: absolute;
             right: 0;
@@ -295,6 +304,9 @@
         }
       }
       .o-tips {
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        -webkit-box-pack: center;
         .o-tips-inner {
           font-size: 20px;
           color: #606060;
@@ -319,6 +331,7 @@
           font-size: 44px;
           color: #606060;
           border-bottom: 1px solid #e0e0e0;
+          cursor: pointer;
           &.k-num-last {
             border: none;
           }
@@ -334,17 +347,29 @@
           &:nth-child(3n):after {
             display: none;
           }
-          &.k-num-grey {
+          &.k-num-11, &.k-num-12 {
             background: #bcbcbc;
+            font-size: 0;
+            line-height: 0;
             img {
               display: block;
               width: 37px;
               height: 25px;
             }
           }
+          &.k-num-12 {
+            background: #bcbcbc url("../../public/imgs/icon-close.jpg") center no-repeat;
+            background-size: 37px 25px;
+          }
         }
       }
     }
+  }
+
+  .icon-point-grey {
+    background: url("../../public/imgs/icon-2-grey.jpg") 5px 6px no-repeat;
+    background-size: 17px 18px;
+    padding-left: 30px;
   }
 
   /*--iframe样式--*/

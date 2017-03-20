@@ -138,9 +138,17 @@ body {
   }
 }
 
-.default-null {
-  width: 294px;
-  height: 254px;
-  background: url("../imgs/icon-null.png") center no-repeat;
-  background-size: 294px 254px;
+.content-null {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  padding: 100px 0;
+  .content-null-inner {
+    width: 294px;
+    height: 254px;
+    background: url("../imgs/icon-null.png") center no-repeat;
+    background-size: cover;
+  }
 }

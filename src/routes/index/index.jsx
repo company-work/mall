@@ -52,23 +52,25 @@ class Index extends React.Component {
     //TOAST,type=0（对）,1（错）,2（惊叹号）,3(没有）
     //APP.TOAST("12",1);
 
-    //var cacheData = APP.GET_CACHE('indexBannerData');
-
-/*
-
-    APP.CONFIRM("温馨提示", "提示的内容", function (data) {
-      var res = data.response,
-        btnIndex = res.buttonIndex;
-      switch (btnIndex) {
-        case 0:
-          alert("您取消了");
-          break;
-        case 1:
-          alert("您确定了");
-          break;
-      }
+    APP.GET_CACHE('indexBannerData', function (arg) {
+      alert(JSON.stringify(arg));
     });
-*/
+
+    /*
+
+     APP.CONFIRM("温馨提示", "提示的内容", function (data) {
+     var res = data.response,
+     btnIndex = res.buttonIndex;
+     switch (btnIndex) {
+     case 0:
+     alert("您取消了");
+     break;
+     case 1:
+     alert("您确定了");
+     break;
+     }
+     });
+     */
 
 
     APP.SET_REFRESH();
@@ -89,7 +91,8 @@ class Index extends React.Component {
             bannerBoxArr.push(data.a0004[0]);
           }
 
-          //APP.SAVE_CACHE('indexBannerData', JSON.stringify(data));
+
+          APP.SAVE_CACHE('indexBannerData', "Cache&test");
 
 
           self.setState({

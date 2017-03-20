@@ -76,10 +76,10 @@ class Category extends React.Component {
   /*--页面初始化--*/
   componentDidMount() {
     var self = this;
+    APP.SET_REFRESH();
     //获取类目
     Test.initCategoryList();
     var cNo = self.getLocationParams("categoryNo");
-
     self.setState({
       curCategoryNo: cNo
     });
@@ -131,7 +131,11 @@ class Category extends React.Component {
     }
 
     if (self.cTitleSwiper) {
-      self.cTitleSwiper.slideTo(index, 1000, false);
+      if (self.state.curActiveIndex >= 2) {
+        self.cTitleSwiper.slideTo(index, 1000, false);
+      } else {
+
+      }
     }
 
     //如果当前是
@@ -143,8 +147,6 @@ class Category extends React.Component {
       curCategoryNo: cid
     });
 
-
-    console.log("swiperTabs");
     //根据类别编号，获取类目数据
     self.updateGoodsData(cid);
 
@@ -155,6 +157,7 @@ class Category extends React.Component {
     var self = this;
     //Mock的测试数据初始化
     //Test.initCategoryGoods();
+
 
     //ajax更新数据
     Axios.get(InterFace.initCategoryGoodsUrl, {
@@ -262,9 +265,16 @@ class Category extends React.Component {
       else {
         cTitleBoxHtm.push(<span key={index}
                                 onClick={self.swiperTabs.bind(self,item.categoryNo,index)}>{item.name}</span>);
-        cBodyBoxHtm.push(<div className="c-body-wrap" key={index}>{item.name}</div>);
+        cBodyBoxHtm.push(<div className="c-body-wrap" key={index}>
+
+          <div className="content-null">
+            <div className="content-null-inner"></div>
+          </div>
+
+        </div>);
       }
     });
+
 
     /*---商品内容这块的HTML---*/
     const paramsTitle = {
@@ -272,17 +282,21 @@ class Category extends React.Component {
       onInit: (swiper) => {
         self.cTitleSwiper = swiper;
       },
-      onSlideChangeEnd: (swiper)=> {
-        /*   var
-         activeIndex = swiper.activeIndex,
-         cid = self.state.categoryTitle[activeIndex].categoryNo;
+      onClick: (swiper, evt)=> {
+        var
+          activeIndex = swiper.activeIndex,
+          translateX = swiper.translate;
 
-         console.log("swiperEnd", cid, activeIndex);
 
-         self.swiperTabs(cid, activeIndex);*/
+        if (activeIndex < 2) {
+          evt.stopPropagation();
+          evt.preventDefault();
+        }
+
       },
+      preventClicksPropagation: true,
       slidesPerView: 4,
-      centeredSlides: true,
+      centeredSlides: false,
       freeMode: true,
       observer: true,//修改swiper自己或子元素时，自动初始化swiper
       observeParents: true//修改swiper的父元素时，自动初始化swiper
