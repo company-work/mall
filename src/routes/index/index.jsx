@@ -42,42 +42,11 @@ class Index extends React.Component {
 
   componentDidMount() {
     var self = this;
-    // 先从APP的缓存当中取出来，做些更新页面，然后再ajax获取数据
-    // 记得使用loading
-    //
-    // APP.CLOSE_LOADING()  隐藏loading
-
-    //从APP的缓存当中获取数据
-
-    //TOAST,type=0（对）,1（错）,2（惊叹号）,3(没有）
-    //APP.TOAST("12",1);
-
-    APP.GET_CACHE('indexBannerData', function (arg) {
-      alert(JSON.stringify(arg));
-    });
-
-    /*
-
-     APP.CONFIRM("温馨提示", "提示的内容", function (data) {
-     var res = data.response,
-     btnIndex = res.buttonIndex;
-     switch (btnIndex) {
-     case 0:
-     alert("您取消了");
-     break;
-     case 1:
-     alert("您确定了");
-     break;
-     }
-     });
-     */
-
-
     APP.SET_REFRESH();
 
-    //获取首页测试数据
-    Test.initIndex();
+
     APP.LOADING("加载中...");
+    //初始化商城BannerList数据
     Axios.get(InterFace.initIndexUrl)
       .then(function (res) {
         APP.CLOSE_LOADING();
@@ -90,9 +59,6 @@ class Index extends React.Component {
           if (data.a0004 && data.a0004.length > 0) {
             bannerBoxArr.push(data.a0004[0]);
           }
-
-
-          APP.SAVE_CACHE('indexBannerData', "Cache&test");
 
 
           self.setState({
@@ -114,9 +80,8 @@ class Index extends React.Component {
         console.log(error);
       });
 
-    //获取首页类别测试数据
-    Test.initIndexCategory();
 
+    //获取类别
     Axios.get(InterFace.initIndexCategoryUrl)
       .then(function (res) {
         if (res.data.stat) {
@@ -127,12 +92,12 @@ class Index extends React.Component {
           })
 
         } else {
-          APP.TOAST("服务器网线被挖断了", 1);
+          APP.TOAST(data.message, 1);
         }
       })
       .catch(function (error) {
         console.log(error);
-        APP.TOAST("服务器网线被挖断了", 1);
+        APP.TOAST(error, 1);
       });
   }
 
@@ -230,9 +195,6 @@ class Index extends React.Component {
     }, 1000);
   }
 
-  componentDidUpdate() {
-
-  }
 
   render() {
     let
@@ -368,7 +330,8 @@ class Index extends React.Component {
 
 
       /*--更多--*/
-      var rItemMoreHtm = <div onClick={self.JumpCategory.bind(self)} className="r-item">
+      var rItemMoreHtm = <div onClick={self.JumpToUrl.bind(self,recommendData.targetUrl)}
+                              className="r-item">
         <div className="r-item-more">
           <div className="r-item-inner">
             <div className="r-item-more-box">

@@ -67,12 +67,14 @@ class PayResult extends React.Component {
       })
       .then(function (res) {
         if (res.data.stat == "ok") {
+
           var data = res.data;
           self.state.resultType = data.tradeStatus;
           self.state.resultTxt = data.statusMsg;
           self.setState(self.state)
         } else {
-          APP.TOAST(res.data.msg, 1);
+
+          APP.TOAST("服务器挖断了", 1);
         }
       })
       .catch(function (error) {
@@ -81,7 +83,7 @@ class PayResult extends React.Component {
   }
 
   JumpIndex() {
-    APP.JUMP_TO("http://192.168.2.246:9001/index.html");
+    APP.JUMP_TO("exchangeRecord.html");
   }
 
   render() {
@@ -94,23 +96,23 @@ class PayResult extends React.Component {
         rTypeCls = "r-info r-info-success";
         rTitle = <div>支付成功</div>;
 
-        switch (self.state.gType) {
-          case "ENTITY":
-            self.setState({
-              resultTxt:"兑换成功 预计5个工作日内发放"
-            })
-            break;
-          case "COUPON":
-            self.setState({
-              resultTxt:"兑换成功 预计3个工作日内发放"
-            })
-            break;
-          case "CHONGZHI":
-            self.setState({
-              resultTxt:"兑换成功 预计3个工作日内入账"
-            });
-            break;
-        }
+        /*  switch (self.state.gType) {
+         case "ENTITY":
+         self.setState({
+         resultTxt:"兑换成功 预计5个工作日内发放"
+         })
+         break;
+         case "COUPON":
+         self.setState({
+         resultTxt:"兑换成功 预计3个工作日内发放"
+         })
+         break;
+         case "CHONGZHI":
+         self.setState({
+         resultTxt:"兑换成功 预计3个工作日内入账"
+         });
+         break;
+         }*/
 
         break;
 

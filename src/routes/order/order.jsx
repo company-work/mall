@@ -247,8 +247,6 @@ class Order extends React.Component {
               withCredentials: true
             },
             data: {
-              token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
-              userId: "8201408060003261",
               tradeOrderNO: state.goodsInfo.tradeOrderNO, //支付单号
               orderId: state.goodsInfo.orderId,//支付单号
               toolsInfo: payToolStr,           //支付工具
@@ -274,8 +272,6 @@ class Order extends React.Component {
                     withCredentials: true
                   },
                   data: {
-                    token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
-                    userId: "8201408060003261",
                     tradeOrderNO: tId,
                     orderId: oId,
                     channelApiId: res.channelApiId    //人民币
@@ -391,7 +387,6 @@ class Order extends React.Component {
       obj.phoneNumber = "";
     }
 
-    obj.userId = "8201506170006346";//测试的时候写死
     obj.orderId = state.goodsInfo.orderId;
     if (state.telNum) {
       obj.extraParam = state.telNum;
@@ -417,8 +412,6 @@ class Order extends React.Component {
             crossDomain: true,
 
             data: {
-              token: "7cacb554aab5c7bfe94080a671c0a7ae8c1f1fcb",
-              userId: "8201408060003261",
               tradeOrderNO: data.tradeOrderNO, //支付单号
               orderId: state.goodsInfo.orderId,//支付单号
               toolsInfo: payToolStr,           //支付工具

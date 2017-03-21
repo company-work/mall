@@ -3,18 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="0454bd5e-15af-4068-9bb0-40801775d18a" name="默认的" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/MallUI/react-swiper.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/libs/APP.js" afterPath="$PROJECT_DIR$/src/public/libs/APP.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/defaults.js" afterPath="$PROJECT_DIR$/cfg/defaults.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/libs/interFace.js" afterPath="$PROJECT_DIR$/src/public/libs/interFace.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/style/base.scss" afterPath="$PROJECT_DIR$/src/public/style/base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.jsx" afterPath="$PROJECT_DIR$/src/routes/category/category.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.scss" afterPath="$PROJECT_DIR$/src/routes/category/category.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" afterPath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/category/category.html" afterPath="$PROJECT_DIR$/src/routes/category/category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" afterPath="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" afterPath="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.html" afterPath="$PROJECT_DIR$/src/routes/index/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.jsx" afterPath="$PROJECT_DIR$/src/routes/index/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/index.scss" afterPath="$PROJECT_DIR$/src/routes/index/index.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" afterPath="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" afterPath="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/order/order.html" afterPath="$PROJECT_DIR$/src/routes/order/order.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/order/order.jsx" afterPath="$PROJECT_DIR$/src/routes/order/order.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/order/order.scss" afterPath="$PROJECT_DIR$/src/routes/order/order.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/payResult/payResult.html" afterPath="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/payResult/payResult.jsx" afterPath="$PROJECT_DIR$/src/routes/payResult/payResult.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/quickPay/quickPay.jsx" afterPath="$PROJECT_DIR$/src/routes/quickPay/quickPay.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/quickPay/quickPay.html" afterPath="$PROJECT_DIR$/src/routes/quickPay/quickPay.html" />
     </list>
     <ignored path="mall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,99 +37,123 @@
     <favorites_list name="mall" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58956796">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="quickPay.jsx" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/routes/quickPay/quickPay.jsx">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.37179488">
-                  <caret line="274" column="19" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
-                  <folding>
-                    <element signature="n#!!block;n#getLocationParams#0;n#QuickPay#0" expanded="false" />
-                    <element signature="e#1076#1450#0" expanded="false" />
-                    <element signature="n#!!block;n#componentDidMount#0;n#QuickPay#0" expanded="false" />
-                    <element signature="n#!!block;n#isTel#0;n#QuickPay#0" expanded="false" />
-                    <element signature="n#!!block;n#setTelNum#0;n#QuickPay#0" expanded="false" />
-                    <element signature="e#3715#3752#0" expanded="false" />
-                    <element signature="e#3974#4127#0" expanded="false" />
-                    <element signature="e#4158#4568#0" expanded="false" />
-                    <element signature="n#!!block;n#setVerifyCode#0;n#QuickPay#0" expanded="false" />
-                    <element signature="n#!!block;n#countDown#0;n#QuickPay#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="category.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/routes/category/category.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.8928572">
-                  <caret line="182" column="12" selection-start-line="182" selection-start-column="12" selection-end-line="182" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#1630#2886#0" expanded="false" />
-                    <element signature="e#3072#3261#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="base.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/public/style/base.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-18.125">
-                  <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
-                  <folding>
-                    <element signature="e#5#1687#0" expanded="false" />
-                    <element signature="e#1582#1625#0" expanded="false" />
-                    <element signature="e#1640#1684#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/routes/index/index.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.767858">
-                  <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#91#599#0" expanded="false" />
-                    <element signature="e#637#2153#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="order.scss" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/routes/order/order.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.43632567">
-                  <caret line="269" column="25" selection-start-line="269" selection-start-column="25" selection-end-line="269" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#209#547#0" expanded="false" />
-                    <element signature="e#568#1320#0" expanded="false" />
-                    <element signature="e#1349#2164#0" expanded="false" />
-                    <element signature="e#2177#2551#0" expanded="false" />
-                    <element signature="e#2586#2781#0" expanded="false" />
-                    <element signature="e#2794#3217#0" expanded="false" />
-                    <element signature="e#3238#3943#0" expanded="false" />
-                    <element signature="e#5174#6046#0" expanded="false" />
-                    <element signature="e#6941#7136#0" expanded="false" />
-                    <element signature="e#7243#7460#0" expanded="false" />
-                    <element signature="e#7847#8217#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="goodsDetails.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+              <folding>
+                <element signature="n#!!block;n#AddNum#0;n#GoodsDetails#0" expanded="false" />
+                <element signature="n#!!block;n#componentDidMount#0;n#GoodsDetails#0" expanded="false" />
+                <element signature="n#!!block;n#getLocationParams#0;n#GoodsDetails#0" expanded="false" />
+                <element signature="e#2785#3159#0" expanded="false" />
+                <element signature="n#!!block;n#getSku#0;n#GoodsDetails#0" expanded="false" />
+                <element signature="e#4468#6947#0" expanded="false" />
+                <element signature="e#10243#10505#0" expanded="false" />
+                <element signature="e#10517#10678#0" expanded="false" />
+                <element signature="e#10871#11487#0" expanded="false" />
+                <element signature="e#12842#12922#0" expanded="false" />
+                <element signature="e#12956#16575#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/order/order.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!block;n#getLocationParams#0;n#Order#0" expanded="false" />
+                <element signature="e#1190#1564#0" expanded="false" />
+                <element signature="n#!!block;n#chooseAddress#0;n#Order#0" expanded="false" />
+                <element signature="n#!!block;n#closeDialog#0;n#Order#0" expanded="false" />
+                <element signature="n#!!block;n#entryNum#0;n#Order#0" expanded="false" />
+                <element signature="n#!!block;n#isTel#0;n#Order#0" expanded="false" />
+                <element signature="n#!!block;n#submitOrder#0;n#Order#0" expanded="false" />
+                <element signature="e#7729#7794#0" expanded="false" />
+                <element signature="e#7833#7899#0" expanded="false" />
+                <element signature="e#8037#8243#0" expanded="false" />
+                <element signature="e#8702#8842#0" expanded="false" />
+                <element signature="e#8852#8942#0" expanded="false" />
+                <element signature="n#!!block;n#setTelNum#0;n#Order#0" expanded="false" />
+                <element signature="n#!!block;n#closeKeyBoard#0;n#Order#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/routes/index/index.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46449703">
+              <caret line="340" column="16" selection-start-line="340" selection-start-column="16" selection-end-line="340" selection-end-column="16" />
+              <folding>
+                <element signature="e#1104#1722#0" expanded="false" />
+                <element signature="e#1162#1652#0" expanded="false" />
+                <element signature="e#1754#1849#0" expanded="false" />
+                <element signature="e#1938#2153#0" expanded="false" />
+                <element signature="e#2185#2251#0" expanded="false" />
+                <element signature="n#!!block;n#JumpMyPoint#0;n#Index#0" expanded="false" />
+                <element signature="n#!!block;n#JumpExchange#0;n#Index#0" expanded="false" />
+                <element signature="n#!!block;n#JumpCategory#0;n#Index#0" expanded="false" />
+                <element signature="n#!!block;n#countDown#0;n#Index#0" expanded="false" />
+                <element signature="e#4692#5468#0" expanded="false" />
+                <element signature="e#5755#7215#0" expanded="false" />
+                <element signature="e#7309#7787#0" expanded="false" />
+                <element signature="e#8081#9000#0" expanded="false" />
+                <element signature="e#8464#8537#0" expanded="false" />
+                <element signature="e#8567#8982#0" expanded="false" />
+                <element signature="e#10594#10675#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="payResult.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+              <folding>
+                <element signature="n#!!block;n#getLocationParams#0;n#PayResult#0" expanded="false" />
+                <element signature="e#799#1173#0" expanded="false" />
+                <element signature="e#1519#1583#0" expanded="false" />
+                <element signature="e#1612#1889#0" expanded="false" />
+                <element signature="e#1921#1959#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exchangeRecord.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+              <folding>
+                <element signature="n#!!block;n#updateData#0;n#ExchangeRecord#0" expanded="false" />
+                <element signature="n#!!block;n#render#0;n#ExchangeRecord#0" expanded="false" />
+                <element signature="e#1760#2983#0" expanded="false" />
+                <element signature="e#1935#2354#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interFace.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/public/libs/interFace.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="15" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -155,9 +182,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/public/libs/utils.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
-        <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
-        <option value="$PROJECT_DIR$/src/routes/order/order.html" />
-        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
         <option value="$PROJECT_DIR$/cfg/dist.js" />
         <option value="$PROJECT_DIR$/src/test/1.js" />
         <option value="$PROJECT_DIR$/dist/assets/category.html" />
@@ -166,33 +190,36 @@
         <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx" />
         <option value="$PROJECT_DIR$/src/test/21.js" />
         <option value="$PROJECT_DIR$/src/map.js" />
-        <option value="$PROJECT_DIR$/src/routes/quickPay/quickPay.html" />
         <option value="$PROJECT_DIR$/src/routes/quickPay/quickPay.scss" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.scss" />
-        <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
         <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.jsx" />
         <option value="$PROJECT_DIR$/src/test/mockTest.js" />
         <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.scss" />
-        <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
-        <option value="$PROJECT_DIR$/src/routes/index/index.html" />
         <option value="$PROJECT_DIR$/cfg/dev.js" />
-        <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
         <option value="$PROJECT_DIR$/cfg/dll.js" />
-        <option value="$PROJECT_DIR$/cfg/defaults.js" />
-        <option value="$PROJECT_DIR$/src/routes/category/category.html" />
         <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx" />
         <option value="$PROJECT_DIR$/src/routes/category/category.scss" />
         <option value="$PROJECT_DIR$/src/routes/index/index.scss" />
         <option value="$PROJECT_DIR$/src/public/style/base.scss" />
         <option value="$PROJECT_DIR$/src/routes/category/category.jsx" />
-        <option value="$PROJECT_DIR$/src/routes/index/index.jsx" />
         <option value="$PROJECT_DIR$/src/public/libs/APP.js" />
         <option value="$PROJECT_DIR$/src/routes/order/order.scss" />
-        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.jsx" />
-        <option value="$PROJECT_DIR$/src/routes/order/order.jsx" />
-        <option value="$PROJECT_DIR$/src/public/libs/interFace.js" />
         <option value="$PROJECT_DIR$/src/routes/quickPay/quickPay.jsx" />
+        <option value="$PROJECT_DIR$/src/routes/category/category.html" />
+        <option value="$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html" />
+        <option value="$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html" />
+        <option value="$PROJECT_DIR$/src/routes/index/index.html" />
+        <option value="$PROJECT_DIR$/src/routes/limitSale/limitSale.html" />
+        <option value="$PROJECT_DIR$/src/routes/myPoint/myPoint.html" />
+        <option value="$PROJECT_DIR$/src/routes/order/order.html" />
+        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.html" />
+        <option value="$PROJECT_DIR$/src/routes/quickPay/quickPay.html" />
+        <option value="$PROJECT_DIR$/cfg/defaults.js" />
+        <option value="$PROJECT_DIR$/src/public/libs/interFace.js" />
+        <option value="$PROJECT_DIR$/src/routes/order/order.jsx" />
+        <option value="$PROJECT_DIR$/src/routes/payResult/payResult.jsx" />
+        <option value="$PROJECT_DIR$/src/routes/index/index.jsx" />
       </list>
     </option>
   </component>
@@ -353,6 +380,32 @@
               <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myPoint" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="limitSale" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -416,6 +469,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="exchangeRecord" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="category" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -435,68 +510,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="style" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -611,10 +624,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14172813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1548999" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -648,7 +661,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -711,13 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/public/libs/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -729,13 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="766" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -766,31 +765,6 @@
             <element signature="n#!!block;n#render#0;n#MyPoint#0" expanded="false" />
             <element signature="e#2799#3276#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27881774">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="e#1760#2983#0" expanded="false" />
-            <element signature="e#1935#2354#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/order/order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19269776">
-          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/quickPay/quickPay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07707911">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -830,14 +804,6 @@
             <element signature="e#5453#5969#0" expanded="false" />
             <element signature="e#11803#12416#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,30 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="71" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cfg/dll.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16863905">
@@ -976,87 +918,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/category/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714">
-          <caret line="10" column="71" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#AddNum#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="n#!!block;n#componentDidMount#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="n#!!block;n#getLocationParams#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="e#2785#3159#0" expanded="false" />
-            <element signature="n#!!block;n#checkAuth#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="n#!!block;n#checkGoods#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="e#3816#3876#0" expanded="false" />
-            <element signature="n#!!block;n#getSku#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="e#4468#6947#0" expanded="false" />
-            <element signature="e#7095#7126#0" expanded="false" />
-            <element signature="n#!!block;n#switchSku#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="n#!!block;n#switchPay#0;n#GoodsDetails#0" expanded="false" />
-            <element signature="e#10243#10505#0" expanded="false" />
-            <element signature="e#10517#10678#0" expanded="false" />
-            <element signature="e#10871#11487#0" expanded="false" />
-            <element signature="e#12842#12922#0" expanded="false" />
-            <element signature="e#12956#16575#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cfg/base.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/defaults.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="78" selection-start-line="19" selection-start-column="78" selection-end-line="19" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.767858">
-          <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-          <folding>
-            <element signature="e#91#599#0" expanded="false" />
-            <element signature="e#637#2153#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/category/category.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8928572">
-          <caret line="182" column="12" selection-start-line="182" selection-start-column="12" selection-end-line="182" selection-end-column="12" />
-          <folding>
-            <element signature="e#1630#2886#0" expanded="false" />
-            <element signature="e#3072#3261#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/style/base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.125">
-          <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
-          <folding>
-            <element signature="e#5#1687#0" expanded="false" />
-            <element signature="e#1582#1625#0" expanded="false" />
-            <element signature="e#1640#1684#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1090,23 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="17" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding>
-            <element signature="e#2380#2475#0" expanded="false" />
-            <element signature="e#2600#2814#0" expanded="false" />
-            <element signature="n#!!block;n#countDown#0;n#Index#0" expanded="false" />
-            <element signature="e#5389#6165#0" expanded="false" />
-            <element signature="e#6452#7912#0" expanded="false" />
-            <element signature="e#8006#8484#0" expanded="false" />
-            <element signature="e#9161#9234#0" expanded="false" />
-            <element signature="e#11240#11321#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/public/libs/cookie.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1119,50 +968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.178572">
           <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="15" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
-          <folding>
-            <element signature="n#!!block;n#getLocationParams#0;n#PayResult#0" expanded="false" />
-            <element signature="e#799#1173#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/order/order.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="271" column="15" selection-start-line="271" selection-start-column="15" selection-end-line="274" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!block;n#getLocationParams#0;n#Order#0" expanded="false" />
-            <element signature="e#1190#1564#0" expanded="false" />
-            <element signature="n#!!block;n#chooseAddress#0;n#Order#0" expanded="false" />
-            <element signature="n#!!block;n#closeDialog#0;n#Order#0" expanded="false" />
-            <element signature="n#!!block;n#entryNum#0;n#Order#0" expanded="false" />
-            <element signature="n#!!block;n#isTel#0;n#Order#0" expanded="false" />
-            <element signature="n#!!block;n#submitOrder#0;n#Order#0" expanded="false" />
-            <element signature="e#7955#8020#0" expanded="false" />
-            <element signature="e#8059#8125#0" expanded="false" />
-            <element signature="e#8263#8469#0" expanded="false" />
-            <element signature="e#8928#9068#0" expanded="false" />
-            <element signature="e#9078#9168#0" expanded="false" />
-            <element signature="e#9281#9325#0" expanded="false" />
-            <element signature="e#9365#9394#0" expanded="false" />
-            <element signature="n#!!block;n#setTelNum#0;n#Order#0" expanded="false" />
-            <element signature="n#!!block;n#closeKeyBoard#0;n#Order#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/libs/interFace.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76824456">
-          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1189,7 +994,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/quickPay/quickPay.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37179488">
+        <state vertical-scroll-proportion="0.0">
           <caret line="274" column="19" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
           <folding>
             <element signature="n#!!block;n#getLocationParams#0;n#QuickPay#0" expanded="false" />
@@ -1202,6 +1007,223 @@
             <element signature="e#4158#4568#0" expanded="false" />
             <element signature="n#!!block;n#setVerifyCode#0;n#QuickPay#0" expanded="false" />
             <element signature="n#!!block;n#countDown#0;n#QuickPay#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5125261">
+          <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+          <folding>
+            <element signature="e#91#599#0" expanded="false" />
+            <element signature="e#637#2153#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/style/base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0594989">
+          <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
+          <folding>
+            <element signature="e#5#1687#0" expanded="false" />
+            <element signature="e#1582#1625#0" expanded="false" />
+            <element signature="e#1640#1684#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/category/category.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11064718">
+          <caret line="182" column="12" selection-start-line="182" selection-start-column="12" selection-end-line="182" selection-end-column="12" />
+          <folding>
+            <element signature="e#1630#2886#0" expanded="false" />
+            <element signature="e#3072#3261#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/category/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/limitSale/limitSale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/myPoint/myPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/order/order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/quickPay/quickPay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/defaults.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/libs/interFace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="15" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/goodsDetails/goodsDetails.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!block;n#AddNum#0;n#GoodsDetails#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#GoodsDetails#0" expanded="false" />
+            <element signature="n#!!block;n#getLocationParams#0;n#GoodsDetails#0" expanded="false" />
+            <element signature="e#2785#3159#0" expanded="false" />
+            <element signature="n#!!block;n#getSku#0;n#GoodsDetails#0" expanded="false" />
+            <element signature="e#4468#6947#0" expanded="false" />
+            <element signature="e#10243#10505#0" expanded="false" />
+            <element signature="e#10517#10678#0" expanded="false" />
+            <element signature="e#10871#11487#0" expanded="false" />
+            <element signature="e#12842#12922#0" expanded="false" />
+            <element signature="e#12956#16575#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/order/order.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#getLocationParams#0;n#Order#0" expanded="false" />
+            <element signature="e#1190#1564#0" expanded="false" />
+            <element signature="n#!!block;n#chooseAddress#0;n#Order#0" expanded="false" />
+            <element signature="n#!!block;n#closeDialog#0;n#Order#0" expanded="false" />
+            <element signature="n#!!block;n#entryNum#0;n#Order#0" expanded="false" />
+            <element signature="n#!!block;n#isTel#0;n#Order#0" expanded="false" />
+            <element signature="n#!!block;n#submitOrder#0;n#Order#0" expanded="false" />
+            <element signature="e#7729#7794#0" expanded="false" />
+            <element signature="e#7833#7899#0" expanded="false" />
+            <element signature="e#8037#8243#0" expanded="false" />
+            <element signature="e#8702#8842#0" expanded="false" />
+            <element signature="e#8852#8942#0" expanded="false" />
+            <element signature="n#!!block;n#setTelNum#0;n#Order#0" expanded="false" />
+            <element signature="n#!!block;n#closeKeyBoard#0;n#Order#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/exchangeRecord/exchangeRecord.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!block;n#updateData#0;n#ExchangeRecord#0" expanded="false" />
+            <element signature="n#!!block;n#render#0;n#ExchangeRecord#0" expanded="false" />
+            <element signature="e#1760#2983#0" expanded="false" />
+            <element signature="e#1935#2354#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/payResult/payResult.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!block;n#getLocationParams#0;n#PayResult#0" expanded="false" />
+            <element signature="e#799#1173#0" expanded="false" />
+            <element signature="e#1519#1583#0" expanded="false" />
+            <element signature="e#1612#1889#0" expanded="false" />
+            <element signature="e#1921#1959#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46449703">
+          <caret line="340" column="16" selection-start-line="340" selection-start-column="16" selection-end-line="340" selection-end-column="16" />
+          <folding>
+            <element signature="e#1104#1722#0" expanded="false" />
+            <element signature="e#1162#1652#0" expanded="false" />
+            <element signature="e#1754#1849#0" expanded="false" />
+            <element signature="e#1938#2153#0" expanded="false" />
+            <element signature="e#2185#2251#0" expanded="false" />
+            <element signature="n#!!block;n#JumpMyPoint#0;n#Index#0" expanded="false" />
+            <element signature="n#!!block;n#JumpExchange#0;n#Index#0" expanded="false" />
+            <element signature="n#!!block;n#JumpCategory#0;n#Index#0" expanded="false" />
+            <element signature="n#!!block;n#countDown#0;n#Index#0" expanded="false" />
+            <element signature="e#4692#5468#0" expanded="false" />
+            <element signature="e#5755#7215#0" expanded="false" />
+            <element signature="e#7309#7787#0" expanded="false" />
+            <element signature="e#8081#9000#0" expanded="false" />
+            <element signature="e#8464#8537#0" expanded="false" />
+            <element signature="e#8567#8982#0" expanded="false" />
+            <element signature="e#10594#10675#0" expanded="false" />
           </folding>
         </state>
       </provider>

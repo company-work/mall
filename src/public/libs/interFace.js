@@ -11,7 +11,8 @@ if (_index != -1) {
   }
 }
 
-host= "http://activity.yingyinglicai.com:8090";
+//host= "http://activity.yingyinglicai.com:8090";
+host= "http://activitytest.yingyinglicai.net";
 
 //var host = "";
 module.exports = {
